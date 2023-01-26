@@ -1,0 +1,257 @@
+@media screen and (max-width: 360px){
+    #productGrid>div{
+        width: 160px !important;
+        height: 320px;
+        position: relative;
+    }
+    #productGrid>div>img{
+        width: 158px !important;
+    }
+    .cardPrice{
+        position: absolute;
+        bottom: 15px !important;
+    }
+    .cardPrice>div>strike{
+        margin: 0 0 0 8px;
+    }
+}
+@media screen and (max-width: 515px){
+    div>div>.blogSidebarItem>div>img{
+        height: 95px !important;
+        width: 95px !important;
+    }
+    div>div>.blogSidebarItem>div>p:nth-child(1){
+        font-size: 16px !important;
+        margin: 0 !important;
+    }
+    div>div>.blogSidebarItem>div>p:nth-child(2){
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (max-width: 575px){
+    .productGrid>div{
+        width: 180px !important;
+        position: relative;
+    }
+    .productGrid>div>img{
+        width: 180px !important;
+    }
+    .cardPrice{
+        position: absolute;
+        bottom: 0;
+    }
+    .container > .productGrid>div{
+         height: 318px !important;
+     }
+    .btnScroll>a>span{
+        display: none;
+    }
+    .d-flex>.btnScroll{
+        padding: 10px 18px !important;
+    }
+    div>.btnScroll>a>img{
+        height: 16px !important;
+    }
+}
+@media screen and (max-width: 767px) {
+    .container> #productGrid{
+        grid-template-columns: auto auto !important;
+    }
+    .row>div>.row>.productBinImg>img{
+        width: 350px !important;
+    }
+    .row>div>div>.productExtraImg{
+        display: flex;
+        align-items: center;
+    }
+    .row>div>div>.productExtraImg>img{
+        margin: 3px !important;
+        height: 80px !important;
+        width: 80px !important;
+    }
+    body>.footer{
+        height: 300px !important;
+        text-align: center;
+    }
+    form{
+        justify-content: center;
+    }
+    .scrollContainer>div>button{
+        font-size: 14px;
+    }
+    .scrollContainer>div:nth-child(1){
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        margin: 0 !important;
+        background-color: #ffffff;
+        padding: 10px;
+        font-size: 25px;
+        z-index: 10;
+    }
+    .relatedProduct>.col-3>img{
+        height: 80px !important;
+        width: 80px !important;
+    }
+    .relatedProduct>.col-9>span{
+        font-size: 17px;
+        display: block;
+    }
+    .relatedProduct>.col-9>p{
+        font-size: 18px !important;
+    }
+    .relatedSection{
+        margin-top: 20px !important;
+        border-radius:6px !important;
+    }
+
+
+}
+@media screen and (max-width: 991px){
+    .navbar-collapse-open>form{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100% !important;
+    }
+    .navbar-collapse-open{
+        text-align: center;
+        padding: 10px !important;
+        border-radius: 5px;
+        box-shadow: -1px 1px 3px green;
+    }
+    .navbar-collapse-open>div{
+        display: block !important;
+        text-align: center !important;
+        padding-top: 9px;
+    }
+    #productGrid{
+        grid-template-columns: auto auto auto !important;
+    }
+    .row>.productBinImg>img{
+        width: 238px !important;
+    }
+    .row>.productExtraImg>img{
+        height: 56px !important;
+        width: 56px !important;
+        margin: 20px 0 0 0 !important;
+    }
+    .pageTitle{
+        font-size: 20px !important;
+        margin: 15px 0 7px 0;
+    }
+    .productKeyFeature>h5{
+        margin-top: 15px !important;
+    }
+    .productKeyFeature>span{
+        margin: 7px 0 0 !important;
+    }
+    div>.titleBelowItem{
+        margin-top: 0px !important;
+    }
+    div >.footerItem>p{
+        font-size: 17px !important;
+    }
+    .btnScroll>a>span{
+        font-size: 13px !important;
+    }
+    .btnScroll>a>img{
+        height: 13px !important;
+    }
+    div>.btnScroll{
+        padding: 3px 7px !important;
+    }
+    .relatedProduct>div>img{
+        height: 65px !important;
+        width: 65px !important;
+    }
+    .relatedProduct>div>span{
+        font-size: 15px;
+        margin: 0 10px;
+        display: inline-block;
+    }
+    .relatedProduct>div>p{
+        font-size: 11px !important;
+        display: inline-block;
+        margin: 0 10px;
+    }
+    #blogItem>div>img{
+        height: 110px !important;
+        width: 110px !important;
+    }
+    #blogItem>div>span{
+        font-size: 14px !important;
+    }
+    #blogItem>div>p{
+        font-size: 12px !important;
+        margin-top: 5px !important;
+        text-align: justify !important;
+    }
+    div > .blogSidebar{
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+    }
+    .blogSidebarItem>div>p:nth-child(1){
+        font-size: 20px !important;
+        margin-bottom: 10px !important;
+    }
+    .blogSidebarItem>div>p:nth-child(2){
+        font-size: 16px !important;
+    }
+    div>.blogSidebarItem>div:nth-child(1){
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+    div>.blogSidebarItem>div:nth-child(2){
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    div>.blogSidebarItem>div>img{
+        width: 140px !important;
+    }
+    .blogSidebarTop{
+        margin-top: 30px;
+    }
+}
+@media screen and (max-width: 1199px){
+    .productGrid{
+        grid-template-columns: auto auto auto auto !important;
+    }
+    .productBinImg>img{
+         width: 340px !important;
+     }
+    .productExtraImg>img{
+        width: 73px !important;
+        height: 73px !important;
+    }
+    div>form>input{
+        width: 100px !important;
+    }
+    .blogItem>div>img{
+        height: 150px !important;
+        width: 150px !important;
+    }
+    .blogCardTitle{
+        font-size: 16px !important;
+    }
+    div>.blogItem>div>p{
+        margin-top: 4px;
+        font-size: 13px !important;
+        text-align: justify;
+    }
+    .blogSidebarItem>div>img{
+        width: 110px !important;
+        height: 130px !important;
+    }
+}
+@media screen and (max-width: 1999px) {
+    .row>div>.regularText{
+        margin-top: 10px;
+        font-size: 14px;
+        margin-right: 7px;
+    }
+}

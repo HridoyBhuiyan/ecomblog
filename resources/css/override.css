@@ -1,0 +1,19 @@
+.breadcrumb, .breadcrumb> ol{
+    background: rgba(255, 255, 255, 0) !important;
+    font-size: 14px;
+    font-family: var(--font-2);
+    padding: 0 !important;
+}
+.breadcrumb{margin-left: 5px}
+
+.navbar-toggler-icon>i{
+    color: white;
+    border: solid 1px #d5d5d5;
+    border-radius: 3px;
+    padding: 3px 5px;
+}
+.navbar-collapse-open{
+    background: #022335;
+    padding: 5px;
+    z-index: 15;
+}
