@@ -293,3 +293,13 @@ img{
 .comment>div>button{
     background: var(--secondary-color);
 }
+.blogPagination{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.blogPagination>nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

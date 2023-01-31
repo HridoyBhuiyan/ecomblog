@@ -18,6 +18,17 @@
                 </div>
             @endforeach
 
+
+            <div class="blogPagination mt-2 mb-5">
+                @if($_SERVER['REQUEST_URI']=='/blog')
+                    <a href="{{$data->nextPageUrl()}}" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default leading-5 rounded-md">Next »</a>
+                @else
+                    {{$data->links()}}
+                @endif
+            </div>
+
+
+
         </div>
     </div>
 @endsection

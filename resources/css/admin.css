@@ -11,3 +11,18 @@
 .menuItem>ul>li:hover{
     background: #c9c9c9;
 }
+.btnInline{
+    font-size: 13px !important;
+    width: 100px !important;
+    height: 30px !important;
+}
+.postInfo{
+    font-size: 14px;
+}
+.postInfo>div>span{
+    color: gray;
+    padding: 0 2px;
+}
+.tox-statusbar__branding{
+    display: none !important;
+}
