@@ -26,3 +26,25 @@
 .tox-statusbar__branding{
     display: none !important;
 }
+a{
+    text-underline: none;
+    text-decoration: none;
+}
+a:hover{
+    text-underline: none;
+    text-decoration: none;
+}
+#selectedTags>li{
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+    display: inline-block;
+    cursor: pointer;
+}
+.selectedTags>li:before{
+    content: "x";
+    font-size: 16px;
+    padding: 5px;
+    color: red;
+}

@@ -31,15 +31,20 @@ Route::view('test', 'test');
 Route::prefix("/admin")->middleware('auth')->group(function (){
     Route::get("/summery", [SummeryController::class,'index']);
     Route::get('/product',[ProductController::class, 'index']);
-//    blog related routes
-    Route::get('/blog',[BlogController::class,'index']);
-    Route::get('/blog/new',[BlogController::class,'create']);
-
-
+    Route::get('/blog',[BlogController::class,'index'])->name('allPostList');
     Route::get('/footer',[FooterController::class,'index']);
     Route::get('/add', [AdminController::class],'index');
     Route::get('/meta',[SeoController::class,'index']);
     Route::get('/info',[InfoController::class,'index']);
+    Route::post('/scheduledPost',[BlogController::class,'scheduledPost']);
+
+
+//    blog related routes
+    Route::get('/blog/new',[BlogController::class,'create'])->name('addNewBlog');
+    Route::post('/postNewPostData', [BlogController::class,'postNewPostData'])->name('postNewPostData');
+    Route::post('/draftPost',[BlogController::class,'draftPost']);
+    Route::get('/deletePost/{id}',[BlogController::class,'deletePost'])->name('deletePost');
+    Route::get('update-post/{id}', [BlogController::class,'updatePost'])->name('blogUpdate');
 });
 
 
