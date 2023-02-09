@@ -45,6 +45,10 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
     Route::post('/draftPost',[BlogController::class,'draftPost']);
     Route::get('/deletePost/{id}',[BlogController::class,'deletePost'])->name('deletePost');
     Route::get('update-post/{id}', [BlogController::class,'updatePost'])->name('blogUpdate');
+
+
+//    Product related Routes
+    
 });
 
 
@@ -53,7 +57,8 @@ Route::middleware('auth')->group(function (){
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+//    return view('dashboard');
+    return view('adminPage.summery.summery');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

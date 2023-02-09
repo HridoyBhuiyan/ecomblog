@@ -48,3 +48,13 @@ a:hover{
     padding: 5px;
     color: red;
 }
+.imgSub{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 15px;
+}
+.tagProduct{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
+}

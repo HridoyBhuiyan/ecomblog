@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProductModel;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function index(){
-        return view('adminPage.product.product');
+        $data = ProductModel::orderBy('id','desc')->get();
+        return view('adminPage.product.product', ['data'=>$data]);
     }
 }
