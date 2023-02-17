@@ -117,11 +117,11 @@ document.getElementById('postDraft').addEventListener('click',function(){
 });
 
 
-
-
 const selectedTags = document.getElementById("selectedTags");
 selectedTags.addEventListener("click", function(event) {
     if (event.target.tagName === "LI") {
         event.target.remove();
     }
 });
+
+

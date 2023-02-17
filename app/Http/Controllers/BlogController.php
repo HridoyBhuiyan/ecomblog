@@ -205,6 +205,7 @@ class BlogController extends Controller
             'allTags'=>BlogTagModel::all()
         ];
 
+
         return view('adminPage.post.updatePost',['data'=>$data]);
     }
 

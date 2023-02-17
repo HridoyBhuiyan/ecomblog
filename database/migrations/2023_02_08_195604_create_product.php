@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('featured_data')->nullable();
             $table->string('category')->nullable();
             $table->string('tags')->nullable();
+            $table->string('schedule')->nullable();
             $table->enum('status',['published','drafted'])->default('published');
             $table->timestamps();
         });

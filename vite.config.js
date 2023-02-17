@@ -12,11 +12,10 @@ export default defineConfig({
                 "resources/css/override.css",
                 "resources/css/responsive.css",
                 "resources/css/style.css",
-
-                'resources/js/app.js',
                 'resources/js/bootstrap.js',
                 'resources/js/script.js',
                 'resources/js/tinymce.min.js',
+                'resources/js/app.js',
             ],
 
             refresh: true,

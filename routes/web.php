@@ -2,24 +2,16 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SeoController;
 use App\Http\Controllers\SummeryController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () { return view('clientPages.home');});
 Route::get('/blog', [BlogController::class, 'blogView']);
@@ -46,8 +38,30 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
     Route::get('/deletePost/{id}',[BlogController::class,'deletePost'])->name('deletePost');
     Route::get('update-post/{id}', [BlogController::class,'updatePost'])->name('blogUpdate');
 
-
 //    Product related Routes
+
+
+//    tag related routes
+    Route::get('/tags',[TagController::class, 'index']);
+    Route::post('/newBlogTag',[TagController::class,'newBlogTag'])->name('newBlogTag');
+    Route::post('/updateBlogTag',[TagController::class,'updateBlogTag'])->name('updateBlogTag');
+    Route::get('/deleteBlogTag/{id}',[TagController::class,'deleteBlogTag']);
+
+    Route::post('/newProductTag',[TagController::class,'newProductTag'])->name('newProductTag');
+    Route::post('/updateProductTag',[TagController::class,'updateProductTag'])->name('updateProductTag');
+    Route::get('/deleteProductTag/{id}',[TagController::class,'deleteProductTag'])->name('deleteProductTag');
+
+
+//    Category related routes
+    Route::get('/category',[CategoryController::class,'index']);
+
+    Route::post('/newBlogCategory',[CategoryController::class,'newBlogCategory'])->name('newBlogCategory');
+    Route::post('/updateBlogCategory',[CategoryController::class,'updateBlogCategory'])->name('updateBlogCategory');
+    Route::get('/deleteBlogCategory/{id}',[CategoryController::class,'deleteBlogCategory']);
+
+    Route::post('/newProductCategory',[CategoryController::class,'newProductCategory'])->name('newProductCategory');
+    Route::post('/updateProductCategory',[CategoryController::class,'updateProductCategory'])->name('updateProductCategory');
+    Route::get('/deleteProductCategory/{id}',[CategoryController::class,'deleteProductCategory'])->name('deleteProductCategory');
 
 });
 
@@ -56,10 +70,7 @@ Route::middleware('auth')->group(function (){
     Route::get('/allAdmin',[AdminController::class,'allAdmin']);
 });
 
-Route::get('/dashboard', function () {
-//    return view('dashboard');
-    return view('adminPage.summery.summery');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [SummeryController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -72,7 +83,10 @@ Route::middleware('auth')->group(function () {
 Route::get('/linkstorage', function () {
     Artisan::call('storage:link');
 });
-
+Route::get('/migrate', function(){
+    \Artisan::call('migrate');
+    dd('migrated!');
+});
 
 
 

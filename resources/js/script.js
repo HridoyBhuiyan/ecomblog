@@ -31,8 +31,6 @@ if (element.scrollWidth > element.clientWidth) {
 
 
 
-
-
 const buttons = document.querySelectorAll("button");
 const sections = document.querySelectorAll("div[id^='section-']");
 

@@ -23,7 +23,7 @@
                             <a href="/admin/category">Category</a>
                         </li>
                         <li class="my-2 py-2 rounded" style="padding-left: 10px">
-                            <a href="/admin/category">Tags</a>
+                            <a href="/admin/tags">Tags</a>
                         </li>
                         <li class="my-2 py-2 rounded" style="padding-left: 10px">
                             <a href="/admin/footer">Footer</a>

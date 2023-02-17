@@ -13,4 +13,9 @@ class AdminController extends Controller
     public function allAdmin(){
         return User::all();
     }
+
+
+
+
+
 }

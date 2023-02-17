@@ -12,8 +12,6 @@
         @csrf
         <h5>Post Title</h5>
 
-
-
         <input value="{{$data['title']}}" name="title" id="titleID" type="text" class="form-control" placeholder="Title Here">
         <h5 class="my-1 mt-3">Content Here</h5>
         <textarea name="content" id="contentID">
