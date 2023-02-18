@@ -39,6 +39,7 @@
                         </div>
                     </li>
                 @endforeach
+                {{$data['blogTag']->links()}}
             </ul>
         </div>
 
@@ -94,6 +95,7 @@
                     </div>
                 </li>
                 @endforeach
+                {{$data['productTag']->links()}}
             </ul>
         </div>
 

@@ -118,7 +118,9 @@
 
 
 </div>
-<script src="https://cdn.tiny.cloud/1/vw3zokhz7kbwxhmtl6uwdc8db3jlldp8h57k1r01rpy2wlgr/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script src="https://cdn.tiny.cloud/1/2nvxye6w441ol74rklwjtaq3w9utq0rgkdhg9ni5sh6hehju/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
 <script>
 
      tinymce.init({

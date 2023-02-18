@@ -10,7 +10,7 @@
         </nav>
 
         <div>
-            <div class="btn btn-success"><a href="/" class="text-white"><i class="px-1 fa-solid fa-square-plus"></i>New Product</a></div>
+            <div class="btn btn-success"><a href="/admin/add-product" class="text-white"><i class="px-1 fa-solid fa-square-plus"></i>New Product</a></div>
             <div class="btn btn-info"><i class="px-1 fa-solid fa-file"></i>Published</div>
             <div class="btn btn-danger"><i class="px-1 fa-solid fa-circle-pause"></i>Draft</div>
         </div>

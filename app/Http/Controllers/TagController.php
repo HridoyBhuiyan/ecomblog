@@ -10,8 +10,8 @@ class TagController extends Controller
 {
     function index(){
         $data = [
-            'blogTag'=>BlogTagModel::all(),
-            'productTag'=>ProductTagModel::all()
+            'blogTag'=>BlogTagModel::paginate(12),
+            'productTag'=>ProductTagModel::paginate(12)
         ];
         return view('adminPage.tags.tag',['data'=> $data]);
     }

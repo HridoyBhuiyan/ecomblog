@@ -10,8 +10,8 @@ class CategoryController extends Controller
 {
     function index(){
         $data = [
-            'blogCategory'=>BlogCategoryModel::get(),
-            'productCategory'=>ProductCategoryModel::all()
+            'blogCategory'=>BlogCategoryModel::paginate(12),
+            'productCategory'=>ProductCategoryModel::paginate(12)
         ];
         return view('adminPage.category.category',['data'=>$data]);
     }
@@ -21,19 +21,26 @@ class CategoryController extends Controller
         return redirect('admin/category')->with(['blogCategory'=>"New Category Added"]);
     }
     public function updateBlogCategory(Request $request){
-
+        BlogCategoryModel::where('id',$request->input('deleteBlogCategory'))->update(['name'=>$request->input('blogCategoryUpdate')]);
+        return redirect('admin/category')->with(['blogCategoryUpdate'=>"Category have updated"]);
     }
-    public function deleteBlogCategory(Request $request){
-
+    public function deleteBlogCategory($id){
+        BlogCategoryModel::where('id',$id)->delete();
+        return redirect('admin/category')->with(['deleteBlogCategory'=>"Blog Category Deleted"]);
     }
+
+
     public function newProductCategory(Request $request){
-
+        ProductCategoryModel::insert(['name'=>$request->input('productCategory')]);
+        return redirect('admin/category')->with(['productCategory'=>"New Category Added"]);
     }
     public function updateProductCategory(Request $request){
-
+        ProductCategoryModel::where('id',$request->input('updatedProductID'))->update(['name'=>$request->input('updatedProductName')]);
+        return redirect('admin/category')->with(['productUpdateCategory'=>"Product Category Updated"]);
     }
-    public function deleteProductCategory(Request $request){
-
+    public function deleteProductCategory($id){
+        ProductCategoryModel::where('id',$id)->delete();
+        return redirect('admin/category')->with(['productCategoryDelete'=>"New Category Added"]);
     }
 
 }

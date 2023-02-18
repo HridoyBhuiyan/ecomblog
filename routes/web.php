@@ -40,6 +40,8 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
 
 //    Product related Routes
 
+    Route::get('add-product',[ProductController::class,'addNewProduct'])->name('addNewProduct');
+
 
 //    tag related routes
     Route::get('/tags',[TagController::class, 'index']);
@@ -57,11 +59,14 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
 
     Route::post('/newBlogCategory',[CategoryController::class,'newBlogCategory'])->name('newBlogCategory');
     Route::post('/updateBlogCategory',[CategoryController::class,'updateBlogCategory'])->name('updateBlogCategory');
-    Route::get('/deleteBlogCategory/{id}',[CategoryController::class,'deleteBlogCategory']);
+    Route::get('/deleteBlogCategory/{id}',[CategoryController::class,'deleteBlogCategory'])->name('deleteBlogCategory');
 
     Route::post('/newProductCategory',[CategoryController::class,'newProductCategory'])->name('newProductCategory');
     Route::post('/updateProductCategory',[CategoryController::class,'updateProductCategory'])->name('updateProductCategory');
     Route::get('/deleteProductCategory/{id}',[CategoryController::class,'deleteProductCategory'])->name('deleteProductCategory');
+
+
+
 
 });
 

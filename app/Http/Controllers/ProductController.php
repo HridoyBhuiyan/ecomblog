@@ -11,4 +11,7 @@ class ProductController extends Controller
         $data = ProductModel::orderBy('id','desc')->get();
         return view('adminPage.product.product', ['data'=>$data]);
     }
+    public function addNewProduct(){
+        return view('adminPage.product.newProduct');
+    }
 }
