@@ -21,7 +21,10 @@ class CategoryController extends Controller
         return redirect('admin/category')->with(['blogCategory'=>"New Category Added"]);
     }
     public function updateBlogCategory(Request $request){
-        BlogCategoryModel::where('id',$request->input('deleteBlogCategory'))->update(['name'=>$request->input('blogCategoryUpdate')]);
+        BlogCategoryModel::where('id',$request->input('deleteBlogCategory'))->update([
+            'name'=>$request->input('blogCategoryUpdate'),
+            'content'=>$request->input('updatedBlogContent')
+            ]);
         return redirect('admin/category')->with(['blogCategoryUpdate'=>"Category have updated"]);
     }
     public function deleteBlogCategory($id){
@@ -35,7 +38,10 @@ class CategoryController extends Controller
         return redirect('admin/category')->with(['productCategory'=>"New Category Added"]);
     }
     public function updateProductCategory(Request $request){
-        ProductCategoryModel::where('id',$request->input('updatedProductID'))->update(['name'=>$request->input('updatedProductName')]);
+        ProductCategoryModel::where('id',$request->input('updatedProductID'))->update([
+            'name'=>$request->input('updatedProductName'),
+            'content'=>$request->input('updatedProductContent')
+        ]);
         return redirect('admin/category')->with(['productUpdateCategory'=>"Product Category Updated"]);
     }
     public function deleteProductCategory($id){

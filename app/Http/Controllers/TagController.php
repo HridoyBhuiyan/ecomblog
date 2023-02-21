@@ -23,7 +23,8 @@ class TagController extends Controller
 
     public function updateBlogTag(Request $request){
         BlogTagModel::where('id', $request->id)->update([
-            'name'=>$request->input('updateBlogTag')
+            'name'=>$request->input('updateBlogTag'),
+            'content'=>$request->input('updatedProductContent')
         ]);
         return redirect('admin/tags')->with(['tagUpdateMessage'=>"Your Tag is updated"]);
     }
@@ -39,7 +40,8 @@ class TagController extends Controller
     }
     public function updateProductTag(Request $request){
         ProductTagModel::where('id', $request->input('ID'))->update([
-            'name'=>$request->input('productTag')
+            'name'=>$request->input('productTag'),
+            'content'=>$request->input('updatedProductContent')
         ]);
         return redirect('admin/tags')->with(['productTagUpdate'=>"Tag Updated"]);
     }

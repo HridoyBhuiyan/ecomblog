@@ -1,23 +1,22 @@
 @extends('dashboard')
 @section('menuContent')
 
-    <input type="text" class="form-control" placeholder="Product Title Here">
-    <input type="text" class="form-control" placeholder="Official Price">
-    <input type="text" class="form-control" placeholder="Unofficial Price">
-    <input type="text" class="form-control" placeholder="Key feature (rich text)">
-    <input type="text" class="form-control" placeholder="Specification (rich text)">
-    <input type="text" class="form-control" placeholder="details (rich text)">
-    <input type="text" class="form-control" placeholder="Pros and cons (rich text)">
-    <input type="text" class="form-control" placeholder="Video URL (rich text)">
-    <input type="text" class="form-control" placeholder="Introduction (rich text)">
-    <input type="text" class="form-control" placeholder="FAQ (rich text)">
+    <input type="text" class="form-control" placeholder="Product Title Here"> <br>
+    <input type="text" class="form-control" placeholder="Official Price"> <br>
+    <input type="text" class="form-control" placeholder="Unofficial Price"> <br>
+    <input type="text" class="form-control" placeholder="Key feature (table)"> <br>
+    <input type="text" class="form-control" placeholder="Specification (rich text)"> <br>
+    <input type="text" class="form-control" placeholder="details (rich text)"> <br>
+    <input type="text" class="form-control" placeholder="Pros and cons (list)"> <br>
+    <input type="text" class="form-control" placeholder="Video URL"> <br>
+    <input type="text" class="form-control" placeholder="Overview (rich text)"> <br>
+    <input type="text" class="form-control" placeholder="FAQ (List)"> <br>
 
-
-    <input type="text" class="form-control" placeholder="Meta Title">
-    <input type="text" class="form-control" placeholder="Feature Image">
-    <input type="text" class="form-control" placeholder="Category">
-    <input type="text" class="form-control" placeholder="Tag">
-
+    <input type="text" class="form-control" placeholder="Meta Title"> <br>
+    <input type="text" class="form-control" placeholder="Meta Description"> <br>
+    <input type="text" class="form-control" placeholder="Feature Image"> <br>
+    <input type="text" class="form-control" placeholder="Category"> <br>
+    <input type="text" class="form-control" placeholder="Tag"> <br>
 
 
 @endsection

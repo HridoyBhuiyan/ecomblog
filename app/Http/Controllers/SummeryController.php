@@ -35,7 +35,6 @@ class SummeryController extends Controller
             'blogCategory'=>BlogCategoryModel::all()->count(),
             'blogTag'=>BlogTagModel::all()->count()
         ];
-
         return view('adminPage.summery.summery', ['data'=>$data]);
     }
 }

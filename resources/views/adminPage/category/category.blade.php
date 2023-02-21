@@ -121,6 +121,8 @@
                         @csrf
                         <input name="deleteBlogCategory" type="text" id="blogCategoryIDUpdate" class="d-none">
                         <input name="blogCategoryUpdate" type="text" class="form-control w-100 my-1" id="blogCategoryUpdate">
+                        <textarea name="updatedBlogContent" id="BlogContentID">
+                        </textarea>
                         <button type="submit" class="btn btn-success w-100 my-1" id="blogCategoryUpdate">Save</button>
                     </form>
                 </div>
@@ -141,21 +143,30 @@
                     <div>
                         <input name="updatedProductID" type="text" class="d-none" id="updatedProductID">
                         <input name="updatedProductName" type="text" class="form-control w-100 my-1" id="productCategory">
+                        <textarea name="updatedProductContent" id="productContentID">
+                        </textarea>
                         <button class="btn btn-success w-100 my-1">Save</button>
                     </div>
                 </form>
             </div>
         </div>
 
-
     </div>
 
-
+    <script src="https://cdn.tiny.cloud/1/2nvxye6w441ol74rklwjtaq3w9utq0rgkdhg9ni5sh6hehju/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script type="text/javascript">
+
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+
         function blogCategoryModalOpen(item){
             document.getElementById('blogCategoryModal').classList="d-flex position-absolute h-100 w-100 justify-content-center align-items-center"
             document.getElementById('blogCategoryUpdate').value = item.name
             document.getElementById('blogCategoryIDUpdate').value = item.id
+            tinymce.get("BlogContentID").setContent(item.content);
         }
 
         function blogCategoryModalHide(){
@@ -163,15 +174,16 @@
         }
 
         function productCategoryModalOpen(item){
-            console.log(item)
             document.getElementById('productCategoryModal').classList="d-flex position-absolute h-100 w-100 justify-content-center align-items-center"
             document.getElementById('productCategory').value = item.name
             document.getElementById('updatedProductID').value = item.id
+            tinymce.get("productContentID").setContent(item.content);
         }
 
         function productCategoryModalHide(){
             document.getElementById('productCategoryModal').classList="d-none position-absolute h-100 w-100 justify-content-center align-items-center"
         }
+
 
 
     </script>

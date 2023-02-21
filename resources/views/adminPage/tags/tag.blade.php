@@ -1,7 +1,7 @@
 @extends('dashboard')
 @section('menuContent')
 
-    <div class="row position-relative">
+    <div class="row ">
         <div class="col-6">
             <h2>Blog Tag</h2>
             @if(session('message'))
@@ -113,6 +113,8 @@
                         @csrf
                         <input name="id" type="text" class="d-none" id="blogTagID">
                         <input name="updateBlogTag" type="text" class="form-control w-100 my-1" id="blogTag">
+                        <textarea name="updatedProductContent" id="blogContentID">
+                        </textarea>
                         <button type="submit" class="btn btn-success w-100 my-1" id="blogTagUpdate">Save</button>
                     </form>
                 </div>
@@ -120,7 +122,6 @@
         </div>
 
 
-{{--        update Product tag--}}
         <div class="d-none position-absolute h-100 w-100 justify-content-center align-items-center" style="background: rgba(208,208,208,0.71)" id="productTagModal">
             <div class="bg-white w-50 p-3 rounded rounded-3 shadow-sm outline-1">
                 <div class="d-flex align-items-center justify-content-between">
@@ -133,6 +134,8 @@
                 <div>
                     <input name="ID" value="" type="text" class="d-none" id="productTagUpdate">
                     <input name="productTag" type="text" class="form-control w-100 my-1" id="productTag">
+                    <textarea name="updatedProductContent" id="productContentID">
+                    </textarea>
                     <button class="btn btn-success w-100 my-1" type="submit">Save</button>
                 </div>
                 </form>
@@ -140,16 +143,20 @@
         </div>
 
 
+
+
     </div>
 
 
     <script type="text/javascript" src="{{asset('resources/js/app.js')}}"></script>
+    <script src="https://cdn.tiny.cloud/1/2nvxye6w441ol74rklwjtaq3w9utq0rgkdhg9ni5sh6hehju/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         function blogTagEdit(item){
             console.log(item)
             document.getElementById('blogTagModal').classList="d-flex position-absolute h-100 w-100 justify-content-center align-items-center";
             document.getElementById('blogTag').value = item.name;
             document.getElementById('blogTagID').value = item.id
+            tinymce.get("blogContentID").setContent(item.content);
         }
 
         function blogTagModalHide(){
@@ -170,11 +177,19 @@
             document.getElementById('productTagModal').classList="d-flex position-absolute h-100 w-100 justify-content-center align-items-center"
             document.getElementById('productTag').value = item.name
             document.getElementById('productTagUpdate').value = item.id
+            tinymce.get("productContentID").setContent(item.content);
         }
 
         function productTagModalHide(){
             document.getElementById('productTagModal').classList="d-none position-absolute h-100 w-100 justify-content-center align-items-center"
         }
+
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+
     </script>
 
 

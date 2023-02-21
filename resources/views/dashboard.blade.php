@@ -7,35 +7,75 @@
                     <ul>
                         <li class="my-2 py-2 rounded" style="padding-left: 10px">
                             <a href="/admin/summery">
+                                <i class="fa-solid fa-qrcode"></i>
                                 Summery
                             </a>
                         </li>
                         <li class="my-2 py-2 rounded" style="padding-left: 10px">
-                            <a href="/admin/product">Product Post</a>
+
+                            <a href="/admin/product">
+                                <i class="fa-solid fa-box"></i>
+                                Product Post
+                            </a>
                         </li>
                         <li class="my-2 py-2 rounded" style="padding-left: 10px">
-                            <a href="/admin/blog">Blog Post</a>
+
+                            <a href="/admin/blog">
+                                <i class="fa-solid fa-newspaper"></i>
+                                Blog Post
+                            </a>
                         </li>
                         <li class="my-2 py-2 rounded" style="padding-left: 10px">
-                            <a href="/admin/blog">Media</a>
+
+                            <a href="/admin/blog">
+                                <i class="fa-solid fa-photo-film"></i>
+                                Media
+                            </a>
                         </li>
                         <li class="my-2 py-2 rounded" style="padding-left: 10px">
-                            <a href="/admin/category">Category</a>
+
+                            <a href="/admin/category">
+                                <i class="fa-solid fa-layer-group"></i>
+                                Category
+                            </a>
                         </li>
                         <li class="my-2 py-2 rounded" style="padding-left: 10px">
-                            <a href="/admin/tags">Tags</a>
+                            <a href="/admin/tags">
+                                <i class="fa-solid fa-tag"></i>
+                                Tags
+                            </a>
+                        </li>
+
+                        <li class="my-2 py-2 rounded" style="padding-left: 10px">
+                            <a href="/admin/footer">
+                                <i class="fa-solid fa-rectangle-list"></i>
+                                Footer
+                            </a>
+                        </li>
+
+                        <li class="my-2 py-2 rounded" style="padding-left: 10px">
+                            <a href="/admin/add">
+                                <i class="fa-solid fa-user-plus"></i>
+                                New Admin
+                            </a>
                         </li>
                         <li class="my-2 py-2 rounded" style="padding-left: 10px">
-                            <a href="/admin/footer">Footer</a>
+                            <a href="/admin/comment">
+                                <i class="fa-regular fa-comment-dots"></i>
+                                Comment
+                            </a>
                         </li>
                         <li class="my-2 py-2 rounded" style="padding-left: 10px">
-                            <a href="/admin/add">New Admin</a>
+                            <a href="/admin/meta">
+                                <i class="fa-solid fa-bullhorn"></i>
+                                SEO Meta
+                            </a>
                         </li>
                         <li class="my-2 py-2 rounded" style="padding-left: 10px">
-                            <a href="/admin/meta">SEO Meta</a>
-                        </li>
-                        <li class="my-2 py-2 rounded" style="padding-left: 10px">
-                            <a href="/admin/info">Site Info</a>
+                            <a href="/admin/info">
+                                <i class="fa-solid fa-circle-info"></i>
+                                Site Info
+                            </a>
                         </li>
                     </ul>
                 </div>
