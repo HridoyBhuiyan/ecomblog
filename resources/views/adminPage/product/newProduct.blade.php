@@ -1,22 +1,187 @@
 @extends('dashboard')
 @section('menuContent')
-
+    <form action="{{route('createNewProduct')}}" method="post">
+        @csrf
+    <h5>Product Title</h5>
     <input type="text" class="form-control" placeholder="Product Title Here"> <br>
-    <input type="text" class="form-control" placeholder="Official Price"> <br>
-    <input type="text" class="form-control" placeholder="Unofficial Price"> <br>
-    <input type="text" class="form-control" placeholder="Key feature (table)"> <br>
-    <input type="text" class="form-control" placeholder="Specification (rich text)"> <br>
-    <input type="text" class="form-control" placeholder="details (rich text)"> <br>
-    <input type="text" class="form-control" placeholder="Pros and cons (list)"> <br>
-    <input type="text" class="form-control" placeholder="Video URL"> <br>
-    <input type="text" class="form-control" placeholder="Overview (rich text)"> <br>
-    <input type="text" class="form-control" placeholder="FAQ (List)"> <br>
 
-    <input type="text" class="form-control" placeholder="Meta Title"> <br>
-    <input type="text" class="form-control" placeholder="Meta Description"> <br>
-    <input type="text" class="form-control" placeholder="Feature Image"> <br>
-    <input type="text" class="form-control" placeholder="Category"> <br>
-    <input type="text" class="form-control" placeholder="Tag"> <br>
+    <h5>Product Price</h5>
+    <div class="row">
+        <div class="col-6"><input type="text" class="form-control" placeholder="Official Price"> <br></div>
+        <div class="col-6"><input type="text" class="form-control" placeholder="Unofficial Price"> <br></div>
+    </div>
+
+
+
+    <div>
+        <h5>Key Feature</h5>
+        <div class="row">
+            <div class="col-4">
+                <input class="form-control mt-2" type="text" placeholder="Release date">
+            </div>
+            <div class="col-4">
+                <input class="form-control mt-2" type="text" placeholder="OS Version">
+            </div>
+            <div class="col-4">
+                <input class="form-control mt-2" type="text" placeholder="Display">
+            </div>
+            <div class="col-4">
+                <input class="form-control mt-2" type="text" placeholder="Camera">
+            </div>
+            <div class="col-4">
+                <input class="form-control mt-2" type="text" placeholder="RAM">
+            </div>
+            <div class="col-4">
+                <input class="form-control mt-2" type="text" placeholder="Battery">
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="mt-3">
+        <h5>Product Specification</h5>
+        <textarea></textarea>
+    </div>
+
+    <div class="pt-3">
+        <h5>Product Details</h5>
+        <textarea></textarea>
+    </div>
+
+
+
+    <div class="pt-3">
+        <h5>Product Overview</h5>
+        <textarea></textarea>
+    </div>
+
+
+    <div class="pt-3">
+        <h5>Pros & Cons</h5>
+        <div class="row">
+            <div class="col-6">
+                <input type="text" class="form-control" placeholder="Pros" id="prosID">
+                <div class="btn border-success w-100 mt-2" onclick="handlePros()">Add New Pros</div>
+                <div id="prosListID" name="props[]"></div>
+            </div>
+            <div class="col-6">
+                <input type="text" class="form-control" placeholder="Cons" id="consID">
+                <div class="btn border-success w-100 mt-2" onclick="handleCons()">Add New Cons</div>
+                <div id="consListID" name="cons[]"></div>
+            </div>
+        </div>
+    </div>
+
+     <br>
+
+    <h5>Product FAQ</h5>
+    <div class="row">
+        <div class="col-5">
+            <input type="text" class="form-control" placeholder="Question" id="QuestionID">
+        </div>
+        <div class="col-5">
+            <input type="text" class="form-control" placeholder="Answer" id="answerID">
+        </div>
+        <div class="col-2">
+            <div class="btn border-success w-100" onclick="handleFAQ()">Save</div>
+        </div>
+    </div>
+
+    <div class="row  mt-3">
+        <div class="col-6">
+            <h5>Product Image</h5>
+            <input type="file" class="form-control" placeholder="Feature Image">
+        </div>
+        <div class="col-6">
+            <h5>YouTube Video Link</h5>
+            <input type="text" class="form-control" placeholder="Video URL">
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-6">
+            <h5>Product Category</h5>
+            <input type="text" class="form-control" placeholder="Category">
+        </div>
+        <div class="col-6">
+            <h5>Product Tags</h5>
+            <input type="text" class="form-control" placeholder="Tag">
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <h5>Meta Title</h5>
+        <input type="text" class="form-control" placeholder="Meta Title"> <br>
+    </div>
+
+    <div>
+        <h5>Meta Description</h5>
+        <input type="text" class="form-control" placeholder="Meta Description"> <br>
+    </div>
+
+        <button type="submit">Post</button>
+    </form>
+
+    <script src="https://cdn.tiny.cloud/1/2nvxye6w441ol74rklwjtaq3w9utq0rgkdhg9ni5sh6hehju/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+        function handlePros(){
+            const inputField = document.getElementById("prosID");
+            const prosValue = inputField.value.trim();
+            const newProsInput = document.createElement("input");
+            newProsInput.type = "text";
+            newProsInput.name = "props[]";
+            newProsInput.value = prosValue;
+            const prosList = document.getElementById("prosListID");
+            prosList.appendChild(newProsInput);
+            inputField.value = "";
+        }
+
+        function handleCons(){
+            const inputField = document.getElementById("consID");
+            if (!inputField.value.length==0){
+                const consValue = inputField.value.trim();
+                const newConsInput = document.createElement("input");
+                newConsInput.type = "text";
+                newConsInput.name = "cons[]";
+                newConsInput.value = consValue;
+                const consList = document.getElementById("consListID");
+                consList.appendChild(newConsInput);
+                inputField.value = "";
+            }
+        }
+
+        function handleFAQ(){
+            const question = document.getElementById("QuestionID").value;
+            const answer = document.getElementById("answerID").value;
+
+            // Create a new FAQ item with the question and answer
+            const newFAQ = document.createElement("div");
+            newFAQ.classList.add("faq-item");
+            newFAQ.innerHTML = `
+        <div class="question">${question}</div>
+        <div class="answer">${answer}</div>
+    `;
+
+            // Append the new FAQ item to the container below the save button
+            const container = document.getElementById("faqContainer");
+            container.appendChild(newFAQ);
+
+            // Clear the input fields
+            document.getElementById("QuestionID").value = "";
+            document.getElementById("answerID").value = "";
+        }
+
+    </script>
 
 
 @endsection
+
+
+
+

@@ -14,4 +14,8 @@ class ProductController extends Controller
     public function addNewProduct(){
         return view('adminPage.product.newProduct');
     }
+
+    public function createNewProduct(Request $request){
+        return $request->input('props');
+    }
 }

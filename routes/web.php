@@ -41,6 +41,7 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
 //    Product related Routes
 
     Route::get('add-product',[ProductController::class,'addNewProduct'])->name('addNewProduct');
+    Route::post('createNewProduct',[ProductController::class,'createNewProduct'])->name('createNewProduct');
 
 
 //    tag related routes

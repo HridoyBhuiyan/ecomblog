@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<form action="{{ route('store') }}" method="post">
+    @csrf
+    <div id="listDiv"></div>
+    <button type="submit">Submit</button>
+</form>
+</body>
+<script>
+    function handleSubmit(){
+        const myList = document.getElementById('listDiv')
+        const myDiv = document.createElement('div');
+        const innerDiv1 = myDiv.appendChild(document.createElement('div'))
+        const innerDiv2 = myDiv.appendChild(document.createElement('div'))
+        const input1 = document.createElement('input');
+        const input2 = document.createElement('input');
+        input1.setAttribute('type', 'hidden');
+        input1.setAttribute('name', 'questions[]');
+        input1.setAttribute('value', document.getElementById('inputID').value);
+        input2.setAttribute('type', 'hidden');
+        input2.setAttribute('name', 'answers[]');
+        input2.setAttribute('value', document.getElementById('ansID').value);
+        innerDiv1.appendChild(document.createTextNode("Question : " + document.getElementById('inputID').value));
+        innerDiv2.appendChild(document.createTextNode("Answer : " + document.getElementById('ansID').value));
+        myDiv.appendChild(input1);
+        myDiv.appendChild(input2);
+        myDiv.appendChild(innerDiv1);
+        myDiv.appendChild(innerDiv2);
+        myList.appendChild(myDiv);
+    }
+</script>
+</html>
+
+
+
+
+<!-- public function store(Request $request)
+{
+    $questions = $request->input('questions');
+    $answers = $request->input('answers');
+
+    $data = array();
+    for ($i = 0; $i < count($questions); $i++) {
+        $data[] = array(
+            'question' => $questions[$i],
+            'answer' => $answers[$i]
+        );
+    }
+
+    // Do something with $data
+} -->

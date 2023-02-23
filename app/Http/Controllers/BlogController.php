@@ -40,19 +40,15 @@ class BlogController extends Controller
 
     function postNewPostData(Request $request){
 
-        $html = $request->input('content');
 
-// Create a new DOMDocument object and load the HTML
-        $dom = new DOMDocument();
-        $dom->loadHTML($html);
 
-// Find the first image element
-        $image = $dom->getElementsByTagName('img')->item(0);
+        $matches = [];
+        preg_match('/src="(.*?)"/', $request->input('content'), $matches);
+        return $matches[1];
 
-// Get the src attribute of the image element
-        return $src = $image->getAttribute('src');
 
-//        return explode('<img', $request->input('content'));
+
+
 
         $request->validate([
             'title'=>"required",
