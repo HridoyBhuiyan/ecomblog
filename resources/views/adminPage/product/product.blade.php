@@ -14,8 +14,17 @@
             <div class="btn btn-info"><i class="px-1 fa-solid fa-file"></i>Published</div>
             <div class="btn btn-danger"><i class="px-1 fa-solid fa-circle-pause"></i>Draft</div>
         </div>
-
         <hr>
+        @if(session('newProductAdd'))
+            <nav aria-label="breadcrumb">
+                <div class="breadcrumb text-success">
+                    {{session('newProductAdd')}}
+                </div>
+            </nav>
+
+        @endif
+
+
         <div class="existingPostList">
 
             <div class="existingPostList">

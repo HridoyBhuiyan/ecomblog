@@ -17,12 +17,22 @@ return new class extends Migration
             $table->id();
             $table->text('title')->nullable();
             $table->text('description')->nullable();
+            $table->text('slug')->nullable();
             $table->text('meta_title')->nullable();
             $table->text('meta_description')->nullable();
             $table->string('feature_image')->nullable();
             $table->text('specification')->nullable();
             $table->text('things_to_know')->nullable();
-            $table->text('props_cons')->nullable();
+
+            $table->text('release_date')->nullable();
+            $table->text('OS_version')->nullable();
+            $table->text('display')->nullable();
+            $table->text('camera')->nullable();
+            $table->text('ram')->nullable();
+            $table->text('battery')->nullable();
+
+            $table->text('pros')->nullable();
+            $table->text('cons')->nullable();
             $table->text('review')->nullable();
             $table->string('video_link')->nullable();
             $table->string('faq')->nullable();

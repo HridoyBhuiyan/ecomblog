@@ -13,7 +13,7 @@ use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () { return view('clientPages.home');});
+Route::get('/', [ProductController::class,'allProductList']);
 Route::get('/blog', [BlogController::class, 'blogView']);
 Route::get('/product', function () {return view('clientPages.productdetails');});
 Route::get('/blog/1', function () {return view('clientPages.blogDetails');});

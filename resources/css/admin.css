@@ -87,3 +87,6 @@ button:focus{
 .menuItem > ul > li > a > i {
     width: 25px;
 }
+#prosListID > input{
+    width: 100%;
+}
