@@ -7,6 +7,7 @@ use App\Models\ProductModel;
 use App\Models\ProductTagModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use function Pest\Laravel\json;
 
 class ProductController extends Controller
 {
@@ -78,7 +79,6 @@ class ProductController extends Controller
             'status'=>"published"
         ]);
 
-
         return redirect('/admin/product')->with(['newProductAdd'=>"New Product Added"]);
     }
 
@@ -86,6 +86,16 @@ class ProductController extends Controller
     public function allProductList(){
         $data = ProductModel::orderBy('id',"desc")->paginate(10);
         return view('clientPages.home',['data'=>$data]);
+    }
+
+    public function singleProduct($slug){
+        $data = [
+            "product"=>ProductModel::where('slug',$slug)->first(),
+            "faq"=>json_decode(ProductModel::where('slug',$slug)->first()->faq),
+            "pros"=>json_decode(ProductModel::where('slug',$slug)->first()->pros),
+            "cons"=>json_decode(ProductModel::where('slug',$slug)->first()->cons)
+        ];
+        return view('clientPages.productdetails',['data'=>$data]);
     }
 
 }

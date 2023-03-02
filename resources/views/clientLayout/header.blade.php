@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navTop">
     <div class="container">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="./">
         <img src="storage/mobile%20dokan%20logo.webp" class="logo">
     </a>
     <button id="target" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

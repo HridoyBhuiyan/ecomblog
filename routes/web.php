@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProductController::class,'allProductList']);
 Route::get('/blog', [BlogController::class, 'blogView']);
-Route::get('/product', function () {return view('clientPages.productdetails');});
 Route::get('/blog/1', function () {return view('clientPages.blogDetails');});
 Route::view('test', 'test');
 
@@ -65,10 +64,6 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
     Route::post('/newProductCategory',[CategoryController::class,'newProductCategory'])->name('newProductCategory');
     Route::post('/updateProductCategory',[CategoryController::class,'updateProductCategory'])->name('updateProductCategory');
     Route::get('/deleteProductCategory/{id}',[CategoryController::class,'deleteProductCategory'])->name('deleteProductCategory');
-
-
-
-
 });
 
 
@@ -94,6 +89,12 @@ Route::get('/migrate', function(){
     dd('migrated!');
 });
 
-
-
+Route::get('/create-symlink', function (){
+    symlink(storage_path('/app/public'), public_path('storage'));
+    echo "Symlink Created. Thanks";
+});
 require __DIR__.'/auth.php';
+
+Route::get('/{slug}', [ProductController::class, 'singleProduct']);
+
+

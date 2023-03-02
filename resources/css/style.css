@@ -125,23 +125,23 @@ button{
     grid-template-columns: auto auto auto auto auto;
     grid-gap: 5px 5px;
 }
-.productGrid>div{
+.productGrid>div>a{
     background: white;
     border-radius: 5px;
     width: 210px;
     margin: 5px 0;
     padding: 10px 0 3px 0;
 }
-.productGrid>div>img{
+.productGrid>div>a>img{
     width: 208px;
     padding-bottom:10px;
     border-bottom: 1px solid rgba(231, 231, 231, 0.49);
     border-radius: 5px;
 }
-.productGrid>div:hover{
+.productGrid>div>a:hover{
      box-shadow: 5px 5px 5px var(--secondary-shadow-color);
  }
-.productGrid>div:hover .productGrid>div>img{
+.productGrid>div>a:hover .productGrid>div>a>img{
     border-bottom: 10px solid red !important;
 }
 .cardTitle{

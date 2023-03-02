@@ -4,7 +4,7 @@
         height: 320px;
         position: relative;
     }
-    #productGrid>div>img{
+    #productGrid>div>a>img{
         width: 158px !important;
     }
     .cardPrice{
@@ -34,7 +34,7 @@
         width: 180px !important;
         position: relative;
     }
-    .productGrid>div>img{
+    .productGrid>div>a>img{
         width: 180px !important;
     }
     .cardPrice{

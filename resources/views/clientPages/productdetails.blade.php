@@ -10,28 +10,30 @@
                            <i class="fa-sharp fa-solid fa-house"></i>
                        </a>
                    </li>
-                   <li class="breadcrumb-item"><a href="#">Library</a></li>
-                   <li class="breadcrumb-item active" aria-current="page">Data</li>
+                   <li class="breadcrumb-item"><a href="/">Product</a></li>
+                   <li class="breadcrumb-item active" aria-current="page">{{$data["product"]->title}}</li>
                </ol>
            </nav>
 {{--           breadcrumb end here--}}
        </div>
 
 
-        <h1>Samsung Galaxy Tab</h1>
+        <h1>
+            {{$data["product"]->title}}
+        </h1>
 
 {{--        photo section start here--}}
         <div class="row">
             <div class="col-lg-5 col-md-4 d-flex align-items-center justify-content-center">
                 <div class="row">
                     <div class="col-12 my-2 d-flex justify-content-center productBinImg">
-                        <img src="storage/phoneimg.jpg" alt="">
+                        <img src="{{$data["product"]->feature_image}}" alt="">
                     </div>
                     <div class="col-12 productExtraImg d-lg-flex justify-content-center">
-                        <img class="m-2" src="storage/phoneimg.jpg" alt="">
-                        <img class="m-2" src="storage/phoneimg.jpg" alt="">
-                        <img class="m-2" src="storage/phoneimg.jpg" alt="">
-                        <img class="m-2" src="storage/phoneimg.jpg" alt="">
+{{--                        <img class="m-2" src="storage/phoneimg.jpg" alt="">--}}
+{{--                        <img class="m-2" src="storage/phoneimg.jpg" alt="">--}}
+{{--                        <img class="m-2" src="storage/phoneimg.jpg" alt="">--}}
+{{--                        <img class="m-2" src="storage/phoneimg.jpg" alt="">--}}
                     </div>
                 </div>
             </div>
@@ -42,22 +44,24 @@
                     <table border="1" class="w-75">
                         <tr>
                             <td class="w-50 px-2">Official Price</td>
-                            <td class="w-50 px-2 regularTextha">Row 1, Cell 2</td>
+                            <td class="w-50 px-2 regularTextha">
+                                {{$data["product"]->official_price}}
+                            </td>
                         </tr>
                         <tr>
                             <td class="w-50 px-2">Unofficial Price</td>
-                            <td class="w-50 px-2 regularTextha">Row 2, Cell 2</td>
+                            <td class="w-50 px-2 regularTextha">{{$data["product"]->unofficial_price}}</td>
                         </tr>
                     </table>
 
                 </div>
                 <div class="productKeyFeature d-flex flex-column">
                     <h5 class="mt-lg-4 mt-md-4 mt-sm-2">Key Feature</h5>
-                    <span class="regularText">MPN : T295-BSM-T295N</span>
-                    <span class="regularText">Model : Galaxy Tab A</span>
+                    <span class="regularText">Release Date : {{$data["product"]->release_date}}</span>
+                    <span class="regularText">OS version : Galaxy Tab A</span>
                     <span class="regularText">Display : 8-inch WXGA Display</span>
-                    <span class="regularText">Storage : 2GB RAM, 32GB ROM</span>
-                    <span class="regularText">CPU : Snapdragon 429</span>
+                    <span class="regularText">Camera : 2GB RAM, 32GB ROM</span>
+                    <span class="regularText">Battery : Snapdragon 429</span>
                     <span class="regularText">GPU : Adreno 504</span>
                     <span class="regularText">Battery : 5100 mAh</span>
                 </div>
@@ -115,7 +119,7 @@
                             <a id="button-3" href="#pros&cons">
                                 <img id="button-3" src="/storage/yn.png">
                                 <span id="button-3">Pros & Cons</span>
-                                </a>
+                            </a>
                             </button>
                         <button id="button-4" class="btnScroll btn">
                             <a id="button-4" href="#video">
@@ -126,7 +130,7 @@
                         <button id="button-5" class="btnScroll btn">
                             <a id="button-5" href="#things-to-know">
                                 <img id="button-5" src="/storage/ttk.png">
-                                <span id="button-5">Notion</span>
+                                <span id="button-5">Overview</span>
                                 </a>
                         </button>
                         <button id="button-6" class="btnScroll btn">
@@ -141,53 +145,8 @@
 
 
                         <div class="">
-                            <h2>Model + Full specifications</h2>
-
-                            <table>
-                                <tr>
-                                    <th>Processor</th>
-                                </tr>
-                                <tr>
-                                    <td>Processor Brand</td><td>Intel</td>
-                                </tr>
-                                <tr>
-                                    <td>Processor Model</td><td>Celeron 520u</td>
-                                </tr>
-                                <tr>
-                                    <td>Generation</td><td>10th generation</td>
-                                </tr>
-                                <tr>
-                                    <td>Processor Frequency</td><td>1.90 GHz</td>
-                                </tr>
-                                <tr>
-                                    <td>Processor Core</td><td>2</td>
-                                </tr>
-                                <tr>
-                                    <td>Processor Thread</td><td>2</td>
-                                </tr>
-                                <tr>
-                                    <td>CPU Cache</td><td>2 MB</td>
-                                </tr>
-                                <tr>
-                                    <td>Display Size</td><td>14 Inch</td>
-                                </tr>
-                                <tr>
-                                    <td>Display Model</td><td>HD (1366 x 768)</td>
-                                </tr>
-                                <tr>
-                                    <td>Touch screen</td><td>No</td>
-                                </tr>
-                                <tr>
-                                    <td>Display Feature</td><td>16:9 LED Backlit, Non-reflective Anti-Glare</td>
-                                </tr>
-
-
-
-                            </table>
-
-
-
-
+                            <h4>Specifications</h4>
+                            {!! $data["product"]->specification !!}
                         </div>
 
 
@@ -195,102 +154,49 @@
                     </div>
                     <div id="section-2">
                         <!-- Content for section 2 -->
-                        <h2>section 2</h2>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-
+                        <h4>Description</h4>
+                        {!! $data["product"]->description !!}
                     </div>
                     <div id="section-3">
                         <!-- Content for section 3 -->
-                        section 3<br>
-                        <br><br>
-                        <br>
-                        <br>
-                        <br>
-                        <br><br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <h4>Pros</h4>
+                                <ul>
+                                    @foreach($data['pros'] as $item)
+                                    <li>{{$item}}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <h4>Cons</h4>
+                                <ul>
+                                    @foreach($data['cons'] as $item)
+                                        <li>{{$item}}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
 
                     </div>
                     <div id="section-4">
                         <!-- Content for section 4 -->
-                        section 4<br>
-                        <br>
-                        <br><br>
-                        <br>
-                        <br>
-                        <br>
-                        <br><br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
+                        <h4>Video</h4>
+
 
                     </div>
                     <div id="section-5">
-                        section 5<br>
-                        <br>
-                        <br>
-                        <br><br>
-                        <br>
-                        <br>
-                        <br>
-                        <br><br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
+                        <h4>Overview</h4>
+
 
                         <!-- Content for section 5 -->
                     </div>
                     <div id="section-6">
                         <!-- Content for section 6 -->
-                        section 6<br>
-                        <br>
-                        <br>
-                        <br><br>
-                        <br>
-                        <br>
-                        <br>
-                        <br><br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
+                        <h4>FAQ</h4>
 
                     </div>
                 </div>
-
-
-
-
             </div>
 
 
@@ -308,9 +214,6 @@
                     <div class="h5 text-center my-2" style="color:#022335">Popular product</div>
                     <hr>
                     <div>
-
-
-
 
 
 
