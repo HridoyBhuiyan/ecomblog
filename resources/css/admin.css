@@ -90,3 +90,8 @@ button:focus{
 #prosListID > input{
     width: 100%;
 }
+.mediaImgDiv{
+    background: white;
+    top: 280px;
+    height: 31px;
+}

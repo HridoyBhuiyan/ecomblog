@@ -157,37 +157,49 @@
                         <h4>Description</h4>
                         {!! $data["product"]->description !!}
                     </div>
+
+                    @if($data['pros'] ||$data['cons'])
+
                     <div id="section-3">
                         <!-- Content for section 3 -->
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <h4>Pros</h4>
-                                <ul>
-                                    @foreach($data['pros'] as $item)
-                                    <li>{{$item}}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <h4>Cons</h4>
-                                <ul>
-                                    @foreach($data['cons'] as $item)
-                                        <li>{{$item}}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <h4>Pros</h4>
+                                    <ul>
+                                        @foreach($data['pros'] as $item)
+                                            <li>{{$item}}</li>
+                                        @endforeach
+                                    </ul>
+                                    </div>
+
+
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <h4>Cons</h4>
+                                            <ul>
+                                                @foreach($data['cons'] as $item)
+                                                    <li>{{$item}}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
                         </div>
 
                     </div>
+
+                    @endif
+
                     <div id="section-4">
                         <!-- Content for section 4 -->
                         <h4>Video</h4>
 
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/NIjJqa8jxbE" allow="autoplay; encrypted-media; fullscreen" frameborder="0"></iframe>
+                        </div>
 
                     </div>
                     <div id="section-5">
                         <h4>Overview</h4>
-
+                        {!! $data['product']->things_to_know !!}
 
                         <!-- Content for section 5 -->
                     </div>
@@ -195,6 +207,14 @@
                         <!-- Content for section 6 -->
                         <h4>FAQ</h4>
 
+                        @foreach($data['faq'] as $item)
+                        <div>
+                            <b>Question : </b> {{$item->question}}
+                            <br>
+                            <b>Answer : </b> {{$item->answer}}
+                        </div>
+
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -209,12 +229,10 @@
 
 
 
-
                 <div class="p-1 border bg-white relatedSection">
                     <div class="h5 text-center my-2" style="color:#022335">Popular product</div>
                     <hr>
                     <div>
-
 
 
                         <div class="row relatedProduct my-1">
@@ -226,7 +244,6 @@
                                 <p class="cardCurrentPrice text-danger">20,000$</p>
                             </div>
                         </div>
-
 
 
 

@@ -41,32 +41,29 @@ class BlogController extends Controller
     function postNewPostData(Request $request){
 
 
+//        $matches = [];
+//        preg_match('/src="(.*?)"/', $request->input('content'), $matches);
+//        return $matches[1];
 
-        $matches = [];
-        preg_match('/src="(.*?)"/', $request->input('content'), $matches);
-        return $matches[1];
-
-
-
-
-
-        $request->validate([
-            'title'=>"required",
-            'metaTitle'=>"required",
-            'metaDescription'=>"required",
-            'content'=>"required",
-            'thumbnail'=>"required",
-            'category'=>"required",
-        ]);
 
 
         $title = $request->input('title');
         $metaTitle = $request->input('metaTitle');
         $metaDescription=$request->input('metaDescription');
-        $tag = json_encode("[".implode(',',$request->input('items'))."]",true);
+        if ($request->items){
+            $tag = json_encode("[".implode(',',$request->input('items'))."]",true);
+        }
+        else {$tag=null;}
         $content = $request->input('content');
-        $thumbnail = $request->file('thumbnail')->store('public');
-        $thumbnailPath = Storage::url($thumbnail);
+        if ($request->hasFile('thumbnail')){
+            $thumbnail = $request->file('thumbnail')->store('public');
+            $thumbnailPath = Storage::url($thumbnail);
+        }
+        else{
+            $thumbnailPath=null;
+        }
+
+
         $category = $request->input('category');
         $slug = strtolower($request->input('slug'));
         $finalSlug = str_replace(" ","-", $slug);
@@ -185,7 +182,6 @@ class BlogController extends Controller
         return redirect('/admin/blog')->with('deletedData',$id);
     }
 
-
     function updatePost($id){
         $currentPost = PostModel::where('id',$id)->first();
         $tags = array();
@@ -219,4 +215,19 @@ class BlogController extends Controller
         return view('adminPage.post.updatePost',['data'=>$data]);
     }
 
+    function showSinglePost($slug){
+        if (PostModel::where('slug', $slug)->count()==1){
+            $data = [
+                "product"=>ProductModel::where('slug',$slug)->first(),
+                "faq"=>json_decode(ProductModel::where('slug',$slug)->first()->faq),
+                "pros"=>json_decode(ProductModel::where('slug',$slug)->first()->pros),
+                "cons"=>json_decode(ProductModel::where('slug',$slug)->first()->cons)
+            ];
+            return view('clientPages.productdetails',['data'=>$data]);
+        }
+        else{
+            return "not even in the post";
+            return redirect('/');
+        }
+    }
 }

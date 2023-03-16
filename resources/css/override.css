@@ -17,3 +17,6 @@
     padding: 5px;
     z-index: 15;
 }
+.ytp-chrome-top, .ytp-show-cards-title{
+    display: none !important;
+}

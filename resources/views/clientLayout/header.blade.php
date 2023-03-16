@@ -23,7 +23,7 @@
                 <a class="nav-link text-white" href="#">Review</a>
             </li>
         </ul>
-        <div class="btn btn-danger">Blog</div>
+        <a href="/blog" class="btn text-white btn-danger">Blog</a>
     </div>
     </div>
 </nav>
@@ -32,21 +32,34 @@
 <div class="d-flex align-items-center justify-content-center bg-white container-fluid seconderyMenu">
     <button id="leftBtnID" class="m-1"><i class="fa-solid fa-chevron-left"></i></button>
     <ul id="horizontalNav" class="d-flex list-unstyled m-0">
-        <li class="px-3 py-2"><a href="*">Home</a></li>
-        <li class="px-3 py-2"><a href="*">Home</a></li>
-        <li class="px-3 py-2"><a href="*">Home</a></li>
-        <li class="px-3 py-2"><a href="*">Home</a></li>
-        <li class="px-3 py-2"><a href="*">Home</a></li>
-        <li class="px-3 py-2"><a href="*">Home</a></li>
-        <li class="px-3 py-2"><a href="*">Home</a></li>
-        <li class="px-3 py-2"><a href="*">Home</a></li>
-        <li class="px-3 py-2"><a href="*">Home</a></li>
-        <li class="px-3 py-2"><a href="*">Home</a></li>
-        <li class="px-3 py-2"><a href="*">Home</a></li>
-        <li class="px-3 py-2"><a href="*">Home</a></li>
-        <li class="px-3 py-2"><a href="*">Home</a></li>
-        <li class="px-3 py-2"><a href="*">Home</a></li>
-        <li class="px-3 py-2"><a href="*">Home</a></li>
+{{--        <li class="px-3 py-2"><a href="*">Home</a></li>--}}
+{{--        <li class="px-3 py-2"><a href="*">Home</a></li>--}}
+
     </ul>
     <button id="rightBtnID" class="m-1"><i class="fa-solid fa-chevron-right"></i> </button>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.js" integrity="sha512-A/D/17S8jG62ka9f3jPwMs+bKGJ1f/xQts7bAUjTIKQf0anTGjlpuEz3q9q++3qRAVYKS3iVx6KzM8GPtIaYfw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+
+    axios.get('showAllProductCategory')
+        .then(response => {
+            const categoryJSON = response.data;
+            categoryJSON.map((item, index)=>{
+                console.log(item)
+                const horizontalNav = document.getElementById('horizontalNav')
+                const li = document.createElement('li')
+                li.setAttribute('class','px-3 py-2');
+                const a = document.createElement('a')
+                a.setAttribute('href',item.slug)
+                a.appendChild(document.createTextNode(item.name))
+                li.appendChild(a)
+                horizontalNav.appendChild(li)
+            })
+
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+
+</script>

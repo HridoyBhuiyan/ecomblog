@@ -31,7 +31,7 @@
                 @foreach($data as $item)
                     <div class="breadcrumb d-flex flex-row align-item-center justify-items-center">
                         <div class="w-75">
-                            <a href="{{route('blogUpdate',[$item->id])}}">
+                            <a href="{{route('updateProductPage',[$item->id])}}">
                                 {{$item->title}}
                             </a>
                             <div class="postInfo row">
@@ -50,7 +50,7 @@
                                 <button type="submit" class="btn bg-danger text-white btnInline mx-1"><i class="px-1 fa-solid fa-trash"></i>Delete</button>
                             </form>
 
-                            <form action="{{route('blogUpdate',[$item->id])}}" method="GET">
+                            <form action="{{route('updateProductPage',[$item->id])}}" method="GET">
                                 <button class="btn bg-dark text-white btnInline mx-1"><i class="px-1 fa-solid fa-circle-pause"></i>Edit</button>
                             </form>
 

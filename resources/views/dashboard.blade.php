@@ -27,7 +27,7 @@
                         </li>
                         <li class="my-2 py-2 rounded" style="padding-left: 10px">
 
-                            <a href="/admin/blog">
+                            <a href="/admin/media">
                                 <i class="fa-solid fa-photo-film"></i>
                                 Media
                             </a>

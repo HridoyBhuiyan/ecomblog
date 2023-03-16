@@ -14,19 +14,14 @@
 
 
                 <h1 class="blogTitle my-2 mt-4">
-                    Smart phone market condition now a day
+                    {{$data['postData']->title}}
                 </h1>
                 <span class="spanText"><b>Date:</b> 21/1/2020</span>
                 <span class="spanText"><b>Author:</b> Cool Author</span>
                 <hr>
 
                 <div class="blogText">
-                    Building an ecommerce website can be a great way to expand your business, but it can also be expensive. However, with the right provider and approach, you can create a cheap ecommerce website that is both cost-effective and professional. In this article, we will discuss how to find affordable ecommerce website solutions for design, development, hosting, templates, and features. Additionally, we will provide tips on how to create an economical online store that stands out and attracts customers.
-                    <img src="/storage/phoneimg.jpg" alt="" class="w-100">
-                    <br>
-                    Building an ecommerce website can be a great way to expand your business, but it can also be expensive. However, with the right provider and approach, you can create a cheap ecommerce website that is both cost-effective and professional. In this article, we will discuss how to find affordable ecommerce website solutions for design, development, hosting, templates, and features. Additionally, we will provide tips on how to create an economical online store that stands out and attracts customers.
-                    <br>
-                    Building an ecommerce website can be a great way to expand your business, but it can also be expensive. However, with the right provider and approach, you can create a cheap ecommerce website that is both cost-effective and professional. In this article, we will discuss how to find affordable ecommerce website solutions for design, development, hosting, templates, and features. Additionally, we will provide tips on how to create an economical online store that stands out and attracts customers.
+                    {!! $data['postData']->blog_content !!}
                 </div>
 
                 <hr>

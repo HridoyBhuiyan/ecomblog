@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\InfoController;
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SeoController;
@@ -24,6 +25,9 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
     Route::get('/product',[ProductController::class, 'index']);
     Route::get('/blog',[BlogController::class,'index'])->name('allPostList');
     Route::get('/footer',[FooterController::class,'index']);
+
+    Route::get('/media',[MediaController::class,'index']);
+
     Route::get('/add', [AdminController::class],'index');
     Route::get('/meta',[SeoController::class,'index']);
     Route::get('/info',[InfoController::class,'index']);
@@ -41,6 +45,8 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
 
     Route::get('add-product',[ProductController::class,'addNewProduct'])->name('addNewProduct');
     Route::post('createNewProduct',[ProductController::class,'createNewProduct'])->name('createNewProduct');
+    Route::get('update-product/{id}',[ProductController::class,'updateProductPage'])->name('updateProductPage');
+    Route::post('updateProduct',[ProductController::class,'updateProduct'])->name('updateProduct');
 
 
 //    tag related routes
@@ -78,7 +84,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+Route::get('/showAllProductCategory', [CategoryController::class,'showAllProductCategory']);
 
 
 Route::get('/linkstorage', function () {
@@ -97,4 +103,5 @@ require __DIR__.'/auth.php';
 
 Route::get('/{slug}', [ProductController::class, 'singleProduct']);
 
+//Route::get('/{slug}',[BlogController::class,'showSinglePost']);
 
