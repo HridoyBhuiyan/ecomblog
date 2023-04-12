@@ -21,7 +21,23 @@
                     {{session('newProductAdd')}}
                 </div>
             </nav>
+        @endif
 
+        @if(session('updateText'))
+            <nav aria-label="breadcrumb">
+                <div class="breadcrumb text-success">
+                    {{session('updateText')}}
+                </div>
+            </nav>
+        @endif
+
+
+        @if(session('deleteText'))
+            <nav aria-label="breadcrumb">
+                <div class="breadcrumb text-success">
+                    {{session('deleteText')}}
+                </div>
+            </nav>
         @endif
 
 
@@ -46,7 +62,7 @@
                         </div>
                         <div class="w-25 d-flex flex-row align-item-center justify-content-between" style="align-items: center">
 
-                            <form action="{{route('deletePost',[$item->id])}}" method="GET">
+                            <form action="{{route('deleteProduct',[$item->id])}}" method="GET">
                                 <button type="submit" class="btn bg-danger text-white btnInline mx-1"><i class="px-1 fa-solid fa-trash"></i>Delete</button>
                             </form>
 

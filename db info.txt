@@ -1,5 +1,0 @@
-db name : mobiled1_solid
-
-db username : mobiled1_ecom
-
-db password : 7Vd(UP}5LWwU

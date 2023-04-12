@@ -95,3 +95,9 @@ button:focus{
     top: 280px;
     height: 31px;
 }
+#consListID > input, #prosListID > input{
+    width:100%;
+    margin-top: 10px;
+    border-radius: 5px;
+    height: 40px;
+}

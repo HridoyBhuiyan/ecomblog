@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{assert('resources/css/fontawesome.min.css')}}">
     <link rel="stylesheet" href="{{assert('resources/css/bootstrap.min.css')}}">
 
-    <title>Document</title>
+    @yield('title')
     @yield('seometa')
     @vite([
     'resources/css/responsive.css',

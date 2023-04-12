@@ -30,6 +30,9 @@
 }
 
 @media screen and (max-width: 575px){
+    .w-auto{
+        width: auto !important;
+    }
     .productGrid>div{
         width: 180px !important;
         position: relative;
@@ -42,7 +45,8 @@
         bottom: 0;
     }
     .container > .productGrid>div{
-         height: 318px !important;
+        height: 255px !important;
+        background: white;
      }
     .btnScroll>a>span{
         display: none;

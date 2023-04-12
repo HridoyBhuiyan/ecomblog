@@ -8,6 +8,7 @@ use App\Models\ProductModel;
 use App\Models\ProductTagModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -43,12 +44,18 @@ class ProductController extends Controller
         }
 
         if ($request->has('slug') && strlen($request->slug)>0){
-            $slug=str_replace(" ","-",$request->input('slug'));
+            $slug= Str::slug($request->input('slug'),'-');
         }
         else{
-            $slug=str_replace(" ","-",$request->input('title'));
+            $slug= Str::slug($request->input('title'),'-');
         }
 
+        if ($request->has("videoURL")){
+            strpos($request->input('videoURL'), "=")?$videoLink=explode('=',$request->input('videoURL')): $videoLink=null;
+        }
+        else{
+            $videoLink = null;
+        }
 
         ProductModel::insert([
             'title'=>$request->title,
@@ -67,7 +74,7 @@ class ProductController extends Controller
             'battery'=>$request->phoneBattery,
             'pros'=>json_encode($request->props),
             'cons'=>json_encode($request->cons),
-            'video_link'=>$request->videoURL,
+            'video_link'=>$videoLink,
             'faq'=>json_encode($faqData),
             'loved'=>0,
             'official_price'=>$request->officialPrice,
@@ -93,6 +100,7 @@ class ProductController extends Controller
                 "pros"=>json_decode(ProductModel::where('slug',$slug)->first()->pros),
                 "cons"=>json_decode(ProductModel::where('slug',$slug)->first()->cons)
             ];
+//            return $data;
             return view('clientPages.productdetails',['data'=>$data]);
         }
         else if (PostModel::where('slug', $slug)->count()==1){
@@ -120,13 +128,12 @@ class ProductController extends Controller
     }
 
     public function updateProduct(Request $request){
-
         $id = $request->id;
         if ($request->has('title')){
             ProductModel::where("id",$id)->update(['title'=>$request->title]);
         }
         if ($request->has('slug')){
-            ProductModel::where("id",$id)->update(['slug'=>$request->slug]);
+            ProductModel::where("id",$id)->update(['slug'=>Str::slug($request->slug,'-')]);
         }
         if ($request->has('officialPrice')){
             ProductModel::where("id",$id)->update(['official_price'=>$request->officialPrice]);
@@ -185,14 +192,17 @@ class ProductController extends Controller
             }
         }
         if ($request->has('videoURL')){
-            ProductModel::where("id",$id)->update(['video_link'=>$request->videoURL]);
+            strpos($request->input('videoURL'), "=")?$videoLink=explode('=',$request->input('videoURL'))[1]: $videoLink=$request->input('videoURL');
+            ProductModel::where("id",$id)->update(['video_link'=>$videoLink]);
         }
         if ($request->has('metaTitle')){
             ProductModel::where("id",$id)->update(['meta_title'=>$request->metaTitle]);
         }
         if ($request->has('metaDescription')){
-            return ProductModel::where("id",$id)->update(['meta_description'=>$request->metaDescription]);
+            ProductModel::where("id",$id)->update(['meta_description'=>$request->metaDescription]);
         }
+
+        return redirect('admin/product')->with(['updateText'=>'Product Updated !']);
     }
 
 
@@ -232,5 +242,10 @@ class ProductController extends Controller
         imagewebp($img, $imageLocationAfter, 40);
         Storage::delete("public/".$imageBaseName);
         return "storage/".$imageName.".webp";
+    }
+
+    function deleteProduct($id){
+        ProductModel::where('id',$id)->delete();
+        return redirect('admin/product')->with(['deleteText'=>'Product Deleted']);
     }
 }

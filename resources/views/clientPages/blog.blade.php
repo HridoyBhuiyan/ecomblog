@@ -1,4 +1,7 @@
 @extends('index')
+@section('title')
+    <title>Mobile Dokan | Blog Page</title>
+@endsection
 @section('content')
     <div class="container my-2">
         <div class="row">

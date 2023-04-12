@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\MediaController;
@@ -27,6 +28,7 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
     Route::get('/footer',[FooterController::class,'index']);
 
     Route::get('/media',[MediaController::class,'index']);
+    Route::get('/comment',[CommentController::class,'index']);
 
     Route::get('/add', [AdminController::class],'index');
     Route::get('/meta',[SeoController::class,'index']);
@@ -47,6 +49,11 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
     Route::post('createNewProduct',[ProductController::class,'createNewProduct'])->name('createNewProduct');
     Route::get('update-product/{id}',[ProductController::class,'updateProductPage'])->name('updateProductPage');
     Route::post('updateProduct',[ProductController::class,'updateProduct'])->name('updateProduct');
+    Route::get('deleteProduct/{id}',[ProductController::class,'deleteProduct'])->name('deleteProduct');
+
+//    Comment related Routes
+
+    Route::post('postComment',[CommentController::class,'postComment'])->name('postComment');
 
 
 //    tag related routes
@@ -99,6 +106,16 @@ Route::get('/create-symlink', function (){
     symlink(storage_path('/app/public'), public_path('storage'));
     echo "Symlink Created. Thanks";
 });
+
+Route::get('/clear-config', function (){
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('config:clear');
+    echo "Config have cleared";
+});
+
+
+
 require __DIR__.'/auth.php';
 
 Route::get('/{slug}', [ProductController::class, 'singleProduct']);

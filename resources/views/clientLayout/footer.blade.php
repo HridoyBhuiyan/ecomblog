@@ -1,12 +1,4 @@
-<div class="container regularText">
-    <h5>Leading computer, laptop and gaming PC retaile and online shop in Bangladesh</h5>
-    <p>Lorem ipsum dollar sit Lorem ipsum dollar sit Lorem ipsum dollar
-        sit Lorem ipsum dollar sit Lorem ipsum dollar sit Lorem ipsum dollar sit Lorem ipsum dollar sit Lorem ipsum do
-        llar sit Lorem ipsum dollar sit Lorem ipsum dollar sit Lorem ipsum dollar sit Lorem ipsum dollar sit Lorem ipsu
-        m dollar sit Lorem ipsum dollar sit Lorem ipsum dollar sit Lorem ipsum dollar sit Lorem ipsum dollar sit Lorem
-        ipsum dollar sit Lorem ipsum dollar sit Lorem ipsum dollar sit Lorem ipsum dollar sit Lorem ipsum dollar sit Lo
-        rem ipsum dollar sit Lorem ipsum dollar sit Lorem ipsum dollar sit Lorem ipsum dollar sit Lorem ipsum dollar sit </p>
-</div>
+
 
 
 

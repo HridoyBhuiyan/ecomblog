@@ -139,7 +139,7 @@ button{
     border-radius: 5px;
 }
 .productGrid>div>a:hover{
-     box-shadow: 5px 5px 5px var(--secondary-shadow-color);
+     box-shadow: 2px 2px 2px var(--secondary-shadow-color);
  }
 .productGrid>div>a:hover .productGrid>div>a>img{
     border-bottom: 10px solid red !important;
@@ -303,4 +303,6 @@ img{
     align-items: center;
     justify-content: center;
 }
-
+.font-semibold{
+    font-weight: 400;
+}

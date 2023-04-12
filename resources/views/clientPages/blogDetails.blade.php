@@ -1,4 +1,7 @@
 @extends('index')
+@section('title')
+    <title>{{$data['postData']->title}}</title>
+@endsection
 @section('content')
     <div class="container">
         <div class="row my-5">

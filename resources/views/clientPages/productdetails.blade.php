@@ -1,6 +1,10 @@
 @extends('index')
+@section('title')
+    <title>{{$data["product"]->title}}</title>
+@endsection
 @section('content')
     <div class="container">
+
        <div class="my-4">
 {{--           breadcrumb start here--}}
            <nav aria-label="breadcrumb m-0 p-0">
@@ -57,13 +61,13 @@
                 </div>
                 <div class="productKeyFeature d-flex flex-column">
                     <h5 class="mt-lg-4 mt-md-4 mt-sm-2">Key Feature</h5>
-                    <span class="regularText">Release Date : {{$data["product"]->release_date}}</span>
-                    <span class="regularText">OS version : Galaxy Tab A</span>
-                    <span class="regularText">Display : 8-inch WXGA Display</span>
-                    <span class="regularText">Camera : 2GB RAM, 32GB ROM</span>
-                    <span class="regularText">Battery : Snapdragon 429</span>
-                    <span class="regularText">GPU : Adreno 504</span>
-                    <span class="regularText">Battery : 5100 mAh</span>
+                    <span class="regularText"> <span class="font-semibold">Release Date :</span> {{$data["product"]->release_date}}</span>
+                    <span class="regularText"> <span class="font-semibold">OS version :</span> {{$data['product']->OS_version}}</span>
+                    <span class="regularText"> <span class="font-semibold">Display :</span> {{$data['product']->display}}</span>
+                    <span class="regularText"> <span class="font-semibold">Camera :</span> {{$data['product']->camera}}</span>
+                    <span class="regularText"> <span class="font-semibold">RAM :</span> {{$data['product']->ram}}</span>
+                    <span class="regularText"> <span class="font-semibold">Battery :</span> {{$data['product']->battery}}</span>
+
                 </div>
 
 
@@ -145,7 +149,7 @@
 
 
                         <div class="">
-                            <h4>Specifications</h4>
+                            <h4>{{$data["product"]->title}} Specifications</h4>
                             {!! $data["product"]->specification !!}
                         </div>
 
@@ -154,7 +158,7 @@
                     </div>
                     <div id="section-2">
                         <!-- Content for section 2 -->
-                        <h4>Description</h4>
+                        <h4>{{$data["product"]->title}} Description</h4>
                         {!! $data["product"]->description !!}
                     </div>
 
@@ -162,27 +166,29 @@
 
                     <div id="section-3">
                         <!-- Content for section 3 -->
-                        <div class="row">
+                        <div class="row p-0 m-0">
 
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <h4>Pros</h4>
-                                    <ul>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 m-0 p-0">
+                                    <h4 class="bg-success p-2 text-white">Pros</h4>
+                                    <ul class="list-unstyled">
                                         @foreach($data['pros'] as $item)
-                                            <li>{{$item}}</li>
+                                            <li class="p-1">✅{{$item}}</li>
                                         @endforeach
                                     </ul>
                                     </div>
 
 
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <h4>Cons</h4>
-                                            <ul>
-                                                @foreach($data['cons'] as $item)
-                                                    <li>{{$item}}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                        </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 m-0 p-0">
+                                    <h4 class="bg-danger p-2 text-white">Cons</h4>
+                                    <ul class="list-unstyled">
+                                        @foreach($data['cons'] as $item)
+                                            <li class="p-1">❌{{$item}}</li>
+                                        @endforeach
+                                    </ul>
+                                    </div>
+
+
+                            </div>
 
                     </div>
 
@@ -190,31 +196,40 @@
 
                     <div id="section-4">
                         <!-- Content for section 4 -->
-                        <h4>Video</h4>
-
+                        <h4>{{$data["product"]->title}} Video</h4>
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/NIjJqa8jxbE" allow="autoplay; encrypted-media; fullscreen" frameborder="0"></iframe>
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{$data["product"]->video_link}}" allow="autoplay; encrypted-media; fullscreen" frameborder="0"></iframe>
                         </div>
 
                     </div>
                     <div id="section-5">
-                        <h4>Overview</h4>
+                        <h4>{{$data["product"]->title}} Overview</h4>
                         {!! $data['product']->things_to_know !!}
 
                         <!-- Content for section 5 -->
                     </div>
                     <div id="section-6">
                         <!-- Content for section 6 -->
-                        <h4>FAQ</h4>
-
+                        <h4>{{$data["product"]->title}} FAQ</h4>
                         @foreach($data['faq'] as $item)
                         <div>
-                            <b>Question : </b> {{$item->question}}
-                            <br>
-                            <b>Answer : </b> {{$item->answer}}
+                            <div class="font-weight-bold py-1"> {{$item->question}}</div>
+                            <div>{{$item->answer}}</div>
                         </div>
-
                         @endforeach
+                    </div>
+
+                    <div id="section-7" class="bg-white p-2 mt-3 rounded">
+                        <!-- Content for section 6 -->
+                        <h4>Leave your Query</h4>
+                        @if(session('msg'))
+                            <p class="text-success">{{session("msg")}}</p>
+                        @endif
+                        <form action="{{route('postComment',['productID'=>$data["product"]->id])}}" method="post">
+                            @csrf
+                        <textarea name="query" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <button class="btn btn-success w-100 mt-2" type="submit">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -276,7 +291,7 @@
                                 <img src="storage/mobile.webp" alt="">
                             </div>
                             <div class="col-9">
-                                <span>Samsung Galary S10+ 2023 edition</span>
+                                <span>Samsung Galaxy S10+ 2023 edition</span>
                                 <p class="cardCurrentPrice text-danger">20,000$</p>
                             </div>
                         </div>
