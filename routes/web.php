@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FeedController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\MediaController;
@@ -20,6 +21,7 @@ Route::get('/blog', [BlogController::class, 'blogView']);
 Route::get('/blog/1', function () {return view('clientPages.blogDetails');});
 Route::view('test', 'test');
 
+Route::get('/category/{slug}', [CategoryController::class,'categoryPage']);
 
 Route::prefix("/admin")->middleware('auth')->group(function (){
     Route::get("/summery", [SummeryController::class,'index']);
@@ -34,7 +36,6 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
     Route::get('/meta',[SeoController::class,'index']);
     Route::get('/info',[InfoController::class,'index']);
     Route::post('/scheduledPost',[BlogController::class,'scheduledPost']);
-
 
 //    blog related routes
     Route::get('/blog/new',[BlogController::class,'create'])->name('addNewBlog');
@@ -53,8 +54,7 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
 
 //    Comment related Routes
 
-    Route::post('postComment',[CommentController::class,'postComment'])->name('postComment');
-
+    Route::post('postComment',[CommentController::class,'postComment'])->name('postComment')->withoutMiddleware('auth');
 
 //    tag related routes
     Route::get('/tags',[TagController::class, 'index']);
@@ -65,7 +65,6 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
     Route::post('/newProductTag',[TagController::class,'newProductTag'])->name('newProductTag');
     Route::post('/updateProductTag',[TagController::class,'updateProductTag'])->name('updateProductTag');
     Route::get('/deleteProductTag/{id}',[TagController::class,'deleteProductTag'])->name('deleteProductTag');
-
 
 //    Category related routes
     Route::get('/category',[CategoryController::class,'index']);
@@ -115,6 +114,12 @@ Route::get('/clear-config', function (){
 });
 
 
+
+//Feed related Routes from here
+Route::get('/feed',[FeedController::class,'homeFeed']);
+Route::get('/{slug}/feed',[FeedController::class,'postFeed']);
+Route::get('/blog/feed',[FeedController::class,'blogFeed']);
+Route::get('/category/{slug}/feed',[FeedController::class,'categoryFeed']);
 
 require __DIR__.'/auth.php';
 

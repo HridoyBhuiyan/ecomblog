@@ -56,6 +56,12 @@ class ProductController extends Controller
         else{
             $videoLink = null;
         }
+        if ($request->has("items")){
+            $tags=json_encode($request->items);
+        }
+        else{
+            $tags=0;
+        }
 
         ProductModel::insert([
             'title'=>$request->title,
@@ -80,7 +86,7 @@ class ProductController extends Controller
             'official_price'=>$request->officialPrice,
             'unofficial_price'=>$request->unofficialPrice,
             'category'=>$request->category,
-            'tags'=>$request->tag,
+            'tags'=>$tags,
             'status'=>"published"
         ]);
 
@@ -94,13 +100,18 @@ class ProductController extends Controller
 
     public function singleProduct($slug){
         if (ProductModel::where('slug',$slug)->count()==1){
+
+            $requestedCategory = ProductModel::where('slug',$slug)->first()->category;
+            $requestedTag = ProductModel::where('slug',$slug)->first()->tags;
+
             $data = [
                 "product"=>ProductModel::where('slug',$slug)->first(),
                 "faq"=>json_decode(ProductModel::where('slug',$slug)->first()->faq),
                 "pros"=>json_decode(ProductModel::where('slug',$slug)->first()->pros),
-                "cons"=>json_decode(ProductModel::where('slug',$slug)->first()->cons)
+                "cons"=>json_decode(ProductModel::where('slug',$slug)->first()->cons),
+                "similarCategoryProduct"=>ProductModel::where("category","like",$requestedCategory)->where('status','published')->limit(2)->get(),
+                "similarTagProduct"=>ProductModel::where('tags','like',$requestedTag)->limit(8)->get()
             ];
-//            return $data;
             return view('clientPages.productdetails',['data'=>$data]);
         }
         else if (PostModel::where('slug', $slug)->count()==1){

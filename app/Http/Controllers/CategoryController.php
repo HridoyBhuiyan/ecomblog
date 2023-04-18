@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogCategoryModel;
 use App\Models\ProductCategoryModel;
+use App\Models\ProductModel;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -54,5 +55,20 @@ class CategoryController extends Controller
 
     public function showAllProductCategory(){
         return ProductCategoryModel::all();
+    }
+
+    public function categoryPage($slug){
+        $categoryData = ProductCategoryModel::where('slug',$slug)->first();
+        $products = ProductModel::where('category',$categoryData->id)->get();
+        $data = [
+            "id"=>$categoryData->id,
+            'name'=>$categoryData->name,
+            'slug'=>$categoryData->slug,
+            'title'=>$categoryData->title,
+            'content'=>$categoryData->content,
+            'metaDescription'=>$categoryData->meta_description,
+            'products'=>$products
+        ];
+        return view('clientPages.category',['data'=>$data]);
     }
 }

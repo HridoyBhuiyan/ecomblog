@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navTop">
     <div class="container">
     <a class="navbar-brand" href="./">
-        <img src="storage/mobile%20dokan%20logo.webp" class="logo">
+        <img src="public/storage/mobile%20dokan%20logo.webp" class="logo">
     </a>
     <button id="target" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">
@@ -50,7 +50,7 @@
                 const li = document.createElement('li')
                 li.setAttribute('class','px-3 py-2');
                 const a = document.createElement('a')
-                a.setAttribute('href',item.slug)
+                a.setAttribute('href',"/category/"+item.slug)
                 a.appendChild(document.createTextNode(item.name))
                 li.appendChild(a)
                 horizontalNav.appendChild(li)

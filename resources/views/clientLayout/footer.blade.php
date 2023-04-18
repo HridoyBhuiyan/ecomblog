@@ -8,7 +8,14 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="footerItem"><i class="fa-solid fa-envelope"></i>
                     <span>Contact us</span>
-                    <p>hellohridoy007@gmail.com</p>
+                    <p>mobiledokan@gmail.com</p>
+                    <div>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">
@@ -25,7 +32,8 @@
                 <div class="footerItem">
                     <i class="fa-solid fa-phone-flip"></i>
                     <span>Hotline</span>
-                    <p>01833455467, 01944734348</p>
+                    <p class="h5">+880-1714780348</p>
+                    <p class="h5">+880-1944734348</p>
                 </div>
             </div>
 
@@ -35,43 +43,22 @@
 
 
 {{--Footer Below here--}}
-<div class="container">
-<div class="row">
+<div class="container mt-2">
+    <div class="d-flex w-100">
+        <div class="bg-success p-2 d-flex align-items-center justify-content-center">Pages:</div>
+        <div class=" w-100 p-2">
+            <span class="p-2">Home</span>
+            <span class="p-2">About Us</span>
+            <span class="p-2">Contact</span>
+            <span class="p-2">Privacy Policy</span>
+            <span class="p-2">Sitemap</span>
+            <span class="p-2">DMCA</span>
+            <span class="p-2">Blog</span>
+            <span class="p-2">Advertisement</span>
+        </div>
+    </div>
 
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="h6 my-3">Address</div>
-        <div class="regularText">
-            41/1 - c, Bashbari housing, Mohammadpur
-            <br>
-            Dhaka - 1207, Bangladesh
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="h6 my-3">Social Link</div>
-        <div>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
-            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="h6 my-3">Hotline</div>
-        <div>
-            <p class="h5">+880-1714780348</p>
-            <p class="h5">+880-1944734348</p>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="h6 my-3">Email</div>
-        <div>
-            <p class="h5">mobiledokan@gmail.com</p>
-            <p class="h5">mobiledokan@gmail.com</p>
-        </div>
-    </div>
+    <hr>
 
 </div>
-    <hr/>
 
-</div>
