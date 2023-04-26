@@ -10,14 +10,14 @@
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>
     <meta property="og:site_name" content="MobileDokan.org"/>
-    <meta property="og:title" content="Mobile dokan bangladesh"/>
-    <meta property="og:description" content="Full description of mobile dokan .org"/>
-    <link rel="canonical" href="https://mobiledokan.org"/>
+    <meta property="og:title" content="{{$data['title']}}"/>
+    <meta property="og:description" content="{{$data['metaDescription']}}"/>
+    <link rel="canonical" href="https://mobiledokan.org/category/{{$data['slug']}}"/>
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "NewsArticle",
+      "@type": "Article",
       "headline": "Title of a News Article",
       "image": [
         "https://example.com/photos/1x1/photo.jpg",
@@ -25,16 +25,7 @@
         "https://example.com/photos/16x9/photo.jpg"
        ],
       "datePublished": "2015-02-05T08:00:00+08:00",
-      "dateModified": "2015-02-05T09:20:00+08:00",
-      "author": [{
-          "@type": "Person",
-          "name": "Jane Doe",
-          "url": "https://example.com/profile/janedoe123"
-        },{
-          "@type": "Person",
-          "name": "John Doe",
-          "url": "https://example.com/profile/johndoe123"
-      }]
+      "dateModified": "2015-02-05T09:20:00+08:00"
     }
     </script>
 
@@ -45,17 +36,13 @@
       "itemListElement": [{
         "@type": "ListItem",
         "position": 1,
-        "name": "Books",
-        "item": "https://example.com/books"
+        "name": "Home",
+        "item": "https://mobiledokan.org/"
       },{
         "@type": "ListItem",
         "position": 2,
-        "name": "Science Fiction",
-        "item": "https://example.com/books/sciencefiction"
-      },{
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Award Winners"
+        "name": "{{$data['title']}}",
+        "item": "https://mobiledokan.org/category/{{$data['slug']}}"
       }]
     }
     </script>
