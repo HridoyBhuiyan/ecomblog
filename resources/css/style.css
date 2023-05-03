@@ -79,7 +79,8 @@ button{
 }
 .footer{
     background: var(--primary-color);
-    height: 150px;
+    padding-bottom: 10px;
+    height: auto;
 }
 #navbarSupportedContent>.btn-danger{
     height: 45px !important;

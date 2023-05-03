@@ -3,6 +3,13 @@
     <title>{{$data["product"]->title}}</title>
 @endsection
 @section('seometa')
+    <style>
+        @media screen and (max-width: 575px){
+            img{
+                width: 100%;
+            }
+        }
+    </style>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>
     <meta property="og:site_name" content="MobileDokan.org"/>
@@ -73,39 +80,43 @@
     </script>
 
 
-    <script type="application/ld+json">
+    @if($data['faq'])
+        <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
     @foreach($data['faq'] as $index=>$item)
-    @if($loop->last)
-                {
-                    "@type": "Question",
-                    "name": "{{$item->question}}",
+                @if($loop->last)
+                    {
+                        "@type": "Question",
+                        "name": "{{$item->question}}",
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "{{$item->answer}}"
             }
           }
             @else
-            {
-            "@type": "Question",
-            "name": "{{$item->question}}",
+                    {
+                    "@type": "Question",
+                    "name": "{{$item->question}}",
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "{{$item->answer}}"
             }
           },
           @endif
-    @endforeach
+            @endforeach
+            ]
+        }
+</script>
+    @endif
 
-        ]
-    }
-    </script>
 
 
-    <script type="application/ld+json">
+
+    @if($data['pros'] || $data['cons'])
+        <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Product",
@@ -122,14 +133,14 @@
             "itemListElement": [
             @foreach($data['pros'] as $index=>$item)
                 @if($loop->last)
-                {
-                    "@type": "ListItem",
-                    "position": {{$index+1}},
+                    {
+                        "@type": "ListItem",
+                        "position": {{$index+1}},
                     "name": "{{$item}}"}
                 @else
-                {
-                    "@type": "ListItem",
-                    "position": {{$index+1}},
+                    {
+                        "@type": "ListItem",
+                        "position": {{$index+1}},
                     "name": "{{$item}}"},
                 @endif
             @endforeach
@@ -139,15 +150,15 @@
             "@type": "ItemList",
             "itemListElement": [
             @foreach($data['cons'] as $index=>$item)
-            @if($loop->last)
-                {
-                    "@type": "ListItem",
-                    "position": {{$index+1}},
+                @if($loop->last)
+                    {
+                        "@type": "ListItem",
+                        "position": {{$index+1}},
                     "name": "{{$item}}"}
                 @else
-                {
-                    "@type": "ListItem",
-                    "position": {{$index+1}},
+                    {
+                        "@type": "ListItem",
+                        "position": {{$index+1}},
                     "name": "{{$item}}"},
                 @endif
             @endforeach
@@ -156,6 +167,7 @@
         }
       }
     </script>
+    @endif
 
 @endsection
 @section('content')

@@ -75,7 +75,7 @@
         width: 80px !important;
     }
     body>.footer{
-        height: 300px !important;
+        /*height: 300px !important;*/
         text-align: center;
     }
     form{

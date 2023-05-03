@@ -70,14 +70,15 @@
 
                     <div class="d-flex justify-content-between cardPrice">
                         <div>
-                            <span class="mx-2 cardCurrentPrice">
+                            @if($item->official_price)
+                                <span class="mx-2 cardCurrentPrice">
                                 {{strpos($item->official_price,"৳")?explode("৳",$item->official_price)[1]: $item->official_price}}
                             </span>
-                            @if($item->unofficial_price)
-                                <strike>
-                                    {{strpos($item->unofficial_price,"৳")?explode("৳",$item->unofficial_price)[1]: $item->unofficial_price}}
-                                </strike>
+                            @else
+                                <span class="mx-2 cardCurrentPrice">UPCOMING</span>
                             @endif
+
+
                         </div>
 
                         <i class="fa-regular fa-heart"></i>
@@ -92,15 +93,21 @@
 
         </div>
 
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
+
+
+
+
+
+        <ul class="pagination d-flex align-items-center justify-content-between">
+            @if($data->hasPages())
+                <li class="page-item"><a class="page-link" href="{{$data->previousPageUrl()}}">Previous</a></li>
+            @endif
+
+
+            <li class="page-item"><a class="page-link" href="{{ $data->nextPageUrl()}}">Next</a></li>
+        </ul>
+
+
 
     </div>
 

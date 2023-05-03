@@ -94,7 +94,8 @@ class ProductController extends Controller
     }
 
     public function allProductList(){
-        $data = ProductModel::orderBy('id',"desc")->paginate(10);
+        $data = ProductModel::where('status','published')->orderBy('id',"desc")->paginate(16);
+//        return $data;
         return view('clientPages.home',['data'=>$data]);
     }
 
