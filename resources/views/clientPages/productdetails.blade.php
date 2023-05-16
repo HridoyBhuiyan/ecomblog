@@ -217,7 +217,7 @@
                     <table border="1" class="w-75">
                         <tr>
                             <td class="w-50 px-2">Official Price</td>
-                            <td class="w-50 px-2 regularTextha">
+                            <td class="w-50 px-2 regularText">
                                 {{$data["product"]->official_price}}
                             </td>
                         </tr>
@@ -254,7 +254,7 @@
                         </div>
                         <div class="col-6 d-flex align-items-center justify-content-center flex-column">
                             <div class="h4 mt-2">
-                                <i class="fa-solid fa-heart"></i> 9
+                                <i class="fa-solid fa-heart"></i>{{$data['views']}}
                             </div>
                              <p>People Choose This</p>
                         </div>

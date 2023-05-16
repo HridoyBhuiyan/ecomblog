@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navTop">
     <div class="container">
     <a class="navbar-brand" href="./">
-        <img src="public/storage/mobile%20dokan%20logo.webp" class="logo">
+        <img src="https://mobiledokan.org/public/storage/mobile%20dokan%20logo.webp" class="logo">
     </a>
     <button id="target" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">
@@ -29,7 +29,7 @@
 </nav>
 
 
-<div class="d-flex align-items-center justify-content-center bg-white container-fluid seconderyMenu">
+<div class="d-flex align-items-center justify-content-center bg-white container-fluid seconderyMenu" style="height: 40px">
     <button id="leftBtnID" class="m-1"><i class="fa-solid fa-chevron-left"></i></button>
     <ul id="horizontalNav" class="d-flex list-unstyled m-0">
 {{--        <li class="px-3 py-2"><a href="*">Home</a></li>--}}

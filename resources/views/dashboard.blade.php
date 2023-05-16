@@ -1,3 +1,8 @@
+{{--@include('layouts.app')--}}
+{{--@yield('content')--}}
+
+
+
 <x-app-layout>
 
     <div class="py-12">

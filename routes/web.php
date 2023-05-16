@@ -19,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ProductController::class,'allProductList']);
 Route::get('/blog', [BlogController::class, 'blogView']);
 Route::get('/blog/1', function () {return view('clientPages.blogDetails');});
-Route::view('test', 'test');
+Route::view('/test/a', 'clientPages.test.test');
 
-Route::get('/category/{slug}', [CategoryController::class,'categoryPage']);
+Route::get('/category/{slug}', [CategoryController::class,'categoryPage'])->name('category');
 
 Route::prefix("/admin")->middleware('auth')->group(function (){
     Route::get("/summery", [SummeryController::class,'index']);
@@ -30,6 +30,7 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
     Route::get('/footer',[FooterController::class,'index']);
 
     Route::get('/media',[MediaController::class,'index']);
+    Route::post("/postMedia",[MediaController::class,'postMedia'])->name('postMedia');
     Route::get('/comment',[CommentController::class,'index']);
 
     Route::get('/add', [AdminController::class],'index');

@@ -7,11 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-    <link rel="stylesheet" href="{{assert('resources/css/responsive.css')}}">
-    <link rel="stylesheet" href="{{assert('resources/css/override.css')}}">
-    <link rel="stylesheet" href="{{assert('resources/css/style.css')}}">
-    <link rel="stylesheet" href="{{assert('resources/css/fontawesome.min.css')}}">
-    <link rel="stylesheet" href="{{assert('resources/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('resources/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('resources/css/override.css')}}">
+    <link rel="stylesheet" href="{{asset('resources/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('resources/css/fontawesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('resources/css/bootstrap.min.css')}}">
+    <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/script.js')}}"></script>
 
     @yield('title')
     @yield('seometa')

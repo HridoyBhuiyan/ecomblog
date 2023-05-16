@@ -9,6 +9,7 @@ use App\Models\ProductTagModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use function Pest\Laravel\json;
 
 class ProductController extends Controller
 {
@@ -101,9 +102,11 @@ class ProductController extends Controller
 
     public function singleProduct($slug){
         if (ProductModel::where('slug',$slug)->count()==1){
-
             $requestedCategory = ProductModel::where('slug',$slug)->first()->category;
             $requestedTag = ProductModel::where('slug',$slug)->first()->tags;
+            $previousView = ProductModel::where('slug', $slug)->first()->loved;
+            ProductModel::where('slug',$slug)->first()->update(['loved'=>$previousView+1]);
+
 
             $data = [
                 "product"=>ProductModel::where('slug',$slug)->first(),
@@ -111,7 +114,8 @@ class ProductController extends Controller
                 "pros"=>json_decode(ProductModel::where('slug',$slug)->first()->pros),
                 "cons"=>json_decode(ProductModel::where('slug',$slug)->first()->cons),
                 "similarCategoryProduct"=>ProductModel::where("category","like",$requestedCategory)->where('status','published')->limit(2)->get(),
-                "similarTagProduct"=>ProductModel::where('tags','like',$requestedTag)->limit(8)->get()
+                "similarTagProduct"=>ProductModel::where('tags','like',$requestedTag)->limit(8)->get(),
+                'views'=>$previousView
             ];
             return view('clientPages.productdetails',['data'=>$data]);
         }
@@ -132,10 +136,11 @@ class ProductController extends Controller
             'pros'=>json_decode($productData->pros),
             'cons'=>json_decode($productData->cons),
             'faq'=>json_decode($productData->faq),
-            'currentCategory'=>ProductCategoryModel::where('id',$id)->first(),
+            'currentCategory'=>json_decode($productData->category),
             'categories'=>ProductCategoryModel::all(),
             'tags'=>ProductTagModel::all()
             ];
+
         return view('adminPage.product.updateProduct',['data'=>$data]);
     }
 
@@ -144,6 +149,14 @@ class ProductController extends Controller
         if ($request->has('title')){
             ProductModel::where("id",$id)->update(['title'=>$request->title]);
         }
+        if ($request->has('category')){
+            ProductModel::where('id',$id)->update(["category"=>$request->category]);
+        }
+
+        if ($request->has('items')){
+            ProductModel::where('id',$id)->update(["tags"=>$request->items]);
+        }
+
         if ($request->has('slug')){
             ProductModel::where("id",$id)->update(['slug'=>Str::slug($request->slug,'-')]);
         }
@@ -181,15 +194,41 @@ class ProductController extends Controller
             ProductModel::where("id",$id)->update(['things_to_know'=>$request->phoneOverview]);
         }
         if ($request->has('props')){
-            ProductModel::where("id",$id)->update(['pros'=>$request->props]);
-        }
-        if ($request->has('cons')){
-            ProductModel::where("id",$id)->update(['cons'=>$request->cons]);
+            $prosArray = [];
+            $pros = $request->props;
+
+            foreach ($pros as $item){
+                if (!$item==null){
+                    array_push($prosArray, $item);
+                }
+            }
+            ProductModel::where("id",$id)->update(['pros'=>$prosArray]);
         }
 
-//        if ($request->has('question') || $request->has('answer')){
-//
-//        }
+        if ($request->has('cons')){
+            $consArray = [];
+            $cons = $request->input('cons');
+            foreach ($cons as $item){
+                if (!$item==null){
+                    array_push($consArray, $item);
+                }
+            }
+            ProductModel::where("id",$id)->update(['cons'=>$consArray]);
+        }
+        if ($request->has('question')||$request->has('answer')){
+            $faq = [];
+            $question = $request->input('question');
+            $answer = $request->input('answer');
+
+            foreach ($question as $key => $item){
+                $faqItem = ["question"=>$item,
+                    "answer"=>$answer[$key]
+                    ];
+                array_push($faq, $faqItem);
+                ProductModel::where('id',$id)->update(['faq'=>$faq]);
+            }
+        }
+
 
         if ($request->hasFile('thumbnail')){
             $image = $request->file('thumbnail');

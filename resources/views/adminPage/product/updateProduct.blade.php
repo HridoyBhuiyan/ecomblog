@@ -143,12 +143,14 @@
             <div class="col-6">
                 <h5>Product Category</h5>
                 <select onclick="selectCategory()"  name="category" id="categoryID" class="form-control">
-                    @if($data['currentCategory'])
-                        <option  value="{{$data['currentCategory']->id}}" id="currentCategoryID" selected>{{$data['currentCategory']->name}}</option>
-                    @endif
 
                     @foreach($data['categories'] as $item)
-                        <option value="{{$item['id']}}">{{$item->name}}</option>
+                        @if($item['id']==$data['currentCategory'])
+                            <option  value="{{$item['currentCategory']}}" id="currentCategoryID" selected>{{$item->name}}</option>
+                        @else
+                            <option value="{{$item['id']}}">{{$item->name}}</option>
+                        @endif
+
                     @endforeach
                 </select>
 
@@ -162,7 +164,20 @@
                 </select>
 
                 <div class="my-1">
-                    <div class="d-inline">Selected Tags: </div><ul name="selectedTags" class="selectedTags" id="selectedTags"></ul>
+                    <div class="d-inline">Selected Tags: </div><ul name="selectedTags" class="selectedTags" id="selectedTags">
+
+                        @if($data['product']->tags)
+                            @foreach(json_decode($data['product']->tags) as $item)
+                                @foreach($data['tags'] as $tag)
+                                    @if($item==$tag['id'])
+                                        <li><input type="hidden" name="items[]" value="{{$item}}">{{$tag['name']}}</li>
+                                    @endif
+                                @endforeach
+                            @endforeach
+                        @endif
+
+
+                    </ul>
                 </div>
 
             </div>

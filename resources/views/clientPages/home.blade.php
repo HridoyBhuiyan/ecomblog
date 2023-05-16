@@ -68,7 +68,7 @@
                     <img src="{{URL::to('public',$item->feature_image)}}" alt="" class="m-0 w-100">
                     <span class="mx-2 text-danger cardTitle">{{$item->title}}</span>
 
-                    <div class="d-flex justify-content-between cardPrice">
+                    <div class="d-flex align-items-center justify-content-between cardPrice">
                         <div>
                             @if($item->official_price)
                                 <span class="mx-2 cardCurrentPrice">
@@ -77,12 +77,12 @@
                             @else
                                 <span class="mx-2 cardCurrentPrice">UPCOMING</span>
                             @endif
-
-
                         </div>
 
-                        <i class="fa-regular fa-heart"></i>
-                        <i class="fa-solid fa-heart"></i>
+                        <div class="d-flex align-items-center">
+                             <div class="mx-2">{{$item->loved}}</div><i class="fa-solid fa-heart"></i>
+                        </div>
+
                     </div>
                     </a>
                 </div>

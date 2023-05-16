@@ -13,4 +13,6 @@ class ProductModel extends Model
     public $keyType = "int";
     public $incrementing = "true";
     public $timestamps = "true";
+    protected $fillable = ['loved'];
+
 }

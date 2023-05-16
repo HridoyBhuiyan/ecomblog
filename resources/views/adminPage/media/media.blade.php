@@ -2,10 +2,17 @@
 @section('menuContent')
 
     <div class="mx-3">
-        <div class="row">
-            <input class="form-control col-9 rounded-2" type="file" multiple>
-            <button type="submit" class="col-3 btn btn-success">Upload</button>
-        </div>
+
+
+        <form action="{{route('postMedia')}}" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="row">
+                <input class="form-control col-9 rounded-2" type="file" multiple>
+                <button type="submit" class="col-3 btn btn-success">Upload</button>
+            </div>
+        </form>
+
+
 
         <div>
             <div class="position-relative">
@@ -13,6 +20,9 @@
                 <div class="mediaImgDiv position-absolute">hello</div>
             </div>
         </div>
+
+
+
     </div>
 
 
