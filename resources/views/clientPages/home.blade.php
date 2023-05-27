@@ -1,4 +1,5 @@
 @extends('index')
+
 @section('title')<title>Mobile Dokan | Home Page</title>
 @endsection
 @section('seometa')
@@ -57,6 +58,9 @@
 
 @endsection
 @section('content')
+
+    @include('clientLayout.menuBar',['category'=>$category])
+
     <div class="container my-5">
         <div class="productGrid" id="productGrid">
 

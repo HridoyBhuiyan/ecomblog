@@ -101,3 +101,28 @@ button:focus{
     border-radius: 5px;
     height: 40px;
 }
+.postInfo>div:nth-child(1)>a{
+    color: red;
+    border: black solid 1px;
+    padding: 1px 15px 1px 15px !important;
+    border-radius: 30px
+}
+.postInfo>div:nth-child(1)>a:hover{
+    box-shadow: rgba(0, 0, 0, 0.44) 1px 1px 1px;
+}
+.mediaImgSize{
+    height: 120px;
+    width: 100px;
+}
+.mediaImgSize > img{
+    height: 90px;
+    width: 100% !important;
+}
+.mediaImgSize > div> a{
+    padding: 6px;
+    font-size: 12px;
+}
+.mediaImgSize > div> button{
+    padding: 6px;
+    font-size: 12px;
+}

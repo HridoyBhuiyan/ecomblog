@@ -1,7 +1,3 @@
-
-
-
-
 <footer class="footer">
     <div class="container">
         <div class="row my-3">
@@ -40,12 +36,12 @@
                     <i class="fa-solid fa-phone-flip"></i>
                     <span>Pages</span>
                     <br>
-                    <a href="/" class="p-0 regularText text-white ml-4">About Us</a> <br>
-                    <a href="/" class="p-0 regularText text-white ml-4">Contact</a> <br>
-                    <a href="/" class="p-0 regularText text-white ml-4">Privacy Policy</a> <br>
-                    <a href="/" class="p-0 regularText text-white ml-4">Sitemap</a> <br>
-                    <a href="/" class="p-0 regularText text-white ml-4">DMCA</a> <br>
-                    <a href="/" class="p-0 regularText text-white ml-4">Advertisement</a> <br>
+                    <a href="/about-us" class="p-0 regularText text-white ml-4">About Us</a> <br>
+                    <a href="/contact" class="p-0 regularText text-white ml-4">Contact</a> <br>
+                    <a href="/privacy-policy" class="p-0 regularText text-white ml-4">Privacy Policy</a> <br>
+                    <a href="/sitemap" class="p-0 regularText text-white ml-4">Sitemap</a> <br>
+                    <a href="/dmca" class="p-0 regularText text-white ml-4">DMCA</a> <br>
+                    <a href="/advertisement" class="p-0 regularText text-white ml-4">Advertisement</a> <br>
                 </div>
             </div>
 

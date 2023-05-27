@@ -47,16 +47,21 @@
                 @foreach($data as $item)
                     <div class="breadcrumb d-flex flex-row align-item-center justify-items-center">
                         <div class="w-75">
+
                             <a href="{{route('updateProductPage',[$item->id])}}">
                                 {{$item->title}}
                             </a>
                             <div class="postInfo row">
-                                <div class="col-4">ID :<span> {{$item->id}} </span></div>
-                                <div class="col-4">Date : <span>{{substr($item->created_at, 0, 10)}}</span></div>
+                                <div class="col-3">
+                                    <a href="/{{$item->slug}}" target="_blank">Preview</a>
+                                </div>
+
+                                <div class="col-3">ID :<span> {{$item->id}} </span></div>
+                                <div class="col-3">Date : <span>{{substr($item->created_at, 0, 10)}}</span></div>
                                 @if($item->status=="draft")
-                                    <div class="col-4">Status :  <span class="text-danger">Draft</span></div>
+                                    <div class="col-3">Status :  <span class="text-danger">Draft</span></div>
                                 @elseif($item->status=="published")
-                                    <div class="col-4">Status :  <span class="text-success">Published</span></div>
+                                    <div class="col-3">Status :  <span class="text-success">Published</span></div>
                                 @endif
                             </div>
                         </div>

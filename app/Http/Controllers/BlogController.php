@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BlogCategoryModel;
 use App\Models\PostModel;
 use App\Models\BlogTagModel;
+use App\Models\ProductCategoryModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -25,7 +26,7 @@ class BlogController extends Controller
 
     function blogView(){
         $data = PostModel::simplePaginate(10);
-        return view('clientPages.blog',['data'=>$data]);
+        return view('clientPages.blog',['data'=>$data,'category'=>ProductCategoryModel::all()]);
     }
 
     function create(){

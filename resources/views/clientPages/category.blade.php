@@ -48,6 +48,7 @@
     </script>
 @endsection
 @section('content')
+    @include('clientLayout.menuBar',['category'=>$category])
     <div class="container">
         <h2 class="text-center">{{$data['title']}}</h2>
         <div class="my-4">

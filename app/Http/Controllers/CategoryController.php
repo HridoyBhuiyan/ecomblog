@@ -69,6 +69,6 @@ class CategoryController extends Controller
             'metaDescription'=>$categoryData->meta_description,
             'products'=>$products
         ];
-        return view('clientPages.category',['data'=>$data]);
+        return view('clientPages.category',['data'=>$data,'category'=>ProductCategoryModel::all()]);
     }
 }

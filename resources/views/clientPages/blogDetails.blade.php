@@ -57,6 +57,7 @@
     </script>
 @endsection
 @section('content')
+    @include('clientLayout.menuBar',['category'=>$category])
     <div class="container">
         <div class="row my-5">
             <div class="col-lg-8">

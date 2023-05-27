@@ -21,6 +21,14 @@ Route::get('/blog', [BlogController::class, 'blogView']);
 Route::get('/blog/1', function () {return view('clientPages.blogDetails');});
 Route::view('/test/a', 'clientPages.test.test');
 
+
+Route::view('/about-us', 'clientPages.aboutUs');
+Route::view('/contact', 'clientPages.contact');
+Route::view('/privacy-policy', 'clientPages.privacyPolicy');
+Route::view('/advertisement', 'clientPages.advert');
+Route::view('/dmca', 'clientPages.dmca');
+
+
 Route::get('/category/{slug}', [CategoryController::class,'categoryPage'])->name('category');
 
 Route::prefix("/admin")->middleware('auth')->group(function (){
@@ -29,8 +37,9 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
     Route::get('/blog',[BlogController::class,'index'])->name('allPostList');
     Route::get('/footer',[FooterController::class,'index']);
 
-    Route::get('/media',[MediaController::class,'index']);
+    Route::get('/media',[MediaController::class,'index'])->name('adminMedia');
     Route::post("/postMedia",[MediaController::class,'postMedia'])->name('postMedia');
+    Route::get('/deleteMedia/{id}',[MediaController::class,'deleteMedia'])->name('deleteMedia');
     Route::get('/comment',[CommentController::class,'index']);
 
     Route::get('/add', [AdminController::class],'index');
@@ -114,6 +123,8 @@ Route::get('/clear-config', function (){
     echo "Config have cleared";
 });
 
+//xml sitemap related routes
+Route::get('/sitemap',[\App\Http\Controllers\SitemapController::class,'index']);
 
 
 //Feed related Routes from here

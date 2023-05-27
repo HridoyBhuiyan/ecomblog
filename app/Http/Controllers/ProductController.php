@@ -96,18 +96,16 @@ class ProductController extends Controller
 
     public function allProductList(){
         $data = ProductModel::where('status','published')->orderBy('id',"desc")->paginate(16);
-//        return $data;
-        return view('clientPages.home',['data'=>$data]);
+        return view('clientPages.home',['data'=>$data, "category"=>ProductCategoryModel::all()]);
     }
 
     public function singleProduct($slug){
         if (ProductModel::where('slug',$slug)->count()==1){
             $requestedCategory = ProductModel::where('slug',$slug)->first()->category;
+            ProductModel::where('slug',$slug)->first()->category;
             $requestedTag = ProductModel::where('slug',$slug)->first()->tags;
             $previousView = ProductModel::where('slug', $slug)->first()->loved;
             ProductModel::where('slug',$slug)->first()->update(['loved'=>$previousView+1]);
-
-
             $data = [
                 "product"=>ProductModel::where('slug',$slug)->first(),
                 "faq"=>json_decode(ProductModel::where('slug',$slug)->first()->faq),
@@ -115,16 +113,16 @@ class ProductController extends Controller
                 "cons"=>json_decode(ProductModel::where('slug',$slug)->first()->cons),
                 "similarCategoryProduct"=>ProductModel::where("category","like",$requestedCategory)->where('status','published')->limit(2)->get(),
                 "similarTagProduct"=>ProductModel::where('tags','like',$requestedTag)->limit(8)->get(),
-                'views'=>$previousView
             ];
-            return view('clientPages.productdetails',['data'=>$data]);
+//            return ProductCategoryModel::where('id',$requestedCategory)->first();
+            return view('clientPages.productdetails',['data'=>$data,'category'=>ProductCategoryModel::all(),"categoryName"=>ProductCategoryModel::where('id',$requestedCategory)->first()]);
         }
         else if (PostModel::where('slug', $slug)->count()==1){
                 $data = [
                     "postData"=>PostModel::where('slug', $slug)->get()->first(),
                     "admin"=>"admin"
                 ];
-                return view('clientPages.blogDetails',['data'=>$data]);
+                return view('clientPages.blogDetails',['data'=>$data,'category'=>ProductCategoryModel::all()]);
             }
         else{ return redirect('/');}
 

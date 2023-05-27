@@ -5,10 +5,9 @@
     </button>
 
     <ul id="horizontalNav" class="d-flex list-unstyled m-0">
-        <li class="px-3 py-2"><a href="/category/one">one</a></li>
-        <li class="px-3 py-2"><a href="/category/two">two</a></li>
-        <li class="px-3 py-2"><a href="/category/null">kkk</a></li>
-        <li class="px-3 py-2"><a href="/category/null">kkk</a></li>
+        @foreach($category as $item)
+            <li class="px-3 py-2"><a href="/category/{{$item->slug}}">{{$item->name}}</a></li>
+        @endforeach
     </ul>
 
     <button id="rightBtnID" class="m-1 d-none">

@@ -171,6 +171,7 @@
 
 @endsection
 @section('content')
+    @include('clientLayout.menuBar',['category'=>$category])
     <div class="container">
 
 
@@ -183,7 +184,7 @@
                            <i class="fa-sharp fa-solid fa-house"></i>
                        </a>
                    </li>
-                   <li class="breadcrumb-item"><a href="/">Product</a></li>
+                   <li class="breadcrumb-item"><a href="/category/{{$categoryName->slug}}">{{$categoryName->name}}</a></li>
                    <li class="breadcrumb-item active" aria-current="page">{{$data["product"]->title}}</li>
                </ol>
            </nav>
@@ -254,7 +255,7 @@
                         </div>
                         <div class="col-6 d-flex align-items-center justify-content-center flex-column">
                             <div class="h4 mt-2">
-                                <i class="fa-solid fa-heart"></i>{{$data['views']}}
+                                <i class="fa-solid fa-heart"></i>{{$data['product']->loved}}
                             </div>
                              <p>People Choose This</p>
                         </div>
