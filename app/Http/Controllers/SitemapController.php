@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 class SitemapController extends Controller
 {
     public function index(){
-//        return BlogCategoryModel::all();
         return view('clientPages.siteMap',[
             "category"=>ProductCategoryModel::all(),
             "product"=>ProductModel::all(),
@@ -19,4 +18,27 @@ class SitemapController extends Controller
             'blogCategory'=>BlogCategoryModel::all()
         ]);
     }
+
+
+    public function XMLsitemap(){
+        return view('sitemap.xmlsitemap');
+    }
+
+
+    public function XMLProductSitemap(){
+        return view('sitemap.xmlproductsitemap');
+    }
+
+    public function XMLPostSitemap(){
+        return view('sitemap.xmlpostsitemap');
+    }
+
+
+    public function XMLPagesitemap(){
+        return view('sitemap.xmlpagesitemap');
+    }
+
+
+
+
 }

@@ -65,4 +65,7 @@ class FeedController extends Controller
         return response()->view('rssfeeid.blogFeed')->header('Content-Type','text/xml');
     }
 
+
+
+
 }

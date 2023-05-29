@@ -11,6 +11,7 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SeoController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\SummeryController;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
@@ -124,7 +125,7 @@ Route::get('/clear-config', function (){
 });
 
 //xml sitemap related routes
-Route::get('/sitemap',[\App\Http\Controllers\SitemapController::class,'index']);
+Route::get('/sitemap',[SitemapController::class,'index']);
 
 
 //Feed related Routes from here
@@ -132,6 +133,11 @@ Route::get('/feed',[FeedController::class,'homeFeed']);
 Route::get('/{slug}/feed',[FeedController::class,'postFeed']);
 Route::get('/blog/feed',[FeedController::class,'blogFeed']);
 Route::get('/category/{slug}/feed',[FeedController::class,'categoryFeed']);
+Route::get('/sitemap.xml',[SitemapController::class,'XMLsitemap']);
+
+Route::get('/product-sitemap.xml',[SitemapController::class,'XMLProductSitemap']);
+Route::get('/post-sitemap.xml',[SitemapController::class,'XMLPostSitemap']);
+Route::get('/pages-sitemap.xml',[SitemapController::class,'XMLPagesitemap']);
 
 require __DIR__.'/auth.php';
 
