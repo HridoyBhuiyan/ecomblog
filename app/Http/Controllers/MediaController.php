@@ -10,9 +10,9 @@ class MediaController extends Controller
 {
     public function index(){
 
-         MediaModel::all();
+//         return MediaModel::all();
 
-//        return view('adminPage.media.media');
+
         return view('adminPage.media.media',['data'=>MediaModel::get()]);
     }
 
@@ -21,7 +21,7 @@ class MediaController extends Controller
 
         foreach ($request->file("allImages") as $item){
             $itemName = explode('.',str_replace(['-',"_"]," ",$item->getClientOriginalName()))[0];
-            $mediaPath = 'storage/'.explode('/',$item->storeAs("/public",$item->getClientOriginalName()))[1];
+            $mediaPath = 'storage/'.explode('/',$item->storeAs("/public",str_replace(' ','-',$item->getClientOriginalName())))[1];
             MediaModel::insert([
                 'media_path'=>$mediaPath,
                 'alt_tag'=>$itemName

@@ -43,7 +43,8 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
     Route::get('/deleteMedia/{id}',[MediaController::class,'deleteMedia'])->name('deleteMedia');
     Route::get('/comment',[CommentController::class,'index']);
 
-    Route::get('/add', [AdminController::class],'index');
+    Route::get('/add',[AdminController::class, 'index']);
+
     Route::get('/meta',[SeoController::class,'index']);
     Route::get('/info',[InfoController::class,'index']);
     Route::post('/scheduledPost',[BlogController::class,'scheduledPost']);

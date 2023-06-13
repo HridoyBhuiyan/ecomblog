@@ -4,8 +4,6 @@
     <div class="row">
 
 
-
-
         <div class="col-6">
             <h2>Blog Category</h2>
             <div class="d-flex align-items-center">
@@ -120,9 +118,18 @@
                     <form action="{{route('updateBlogCategory')}}" method="post">
                         @csrf
                         <input name="deleteBlogCategory" type="text" id="blogCategoryIDUpdate" class="d-none">
+                        <p class="m-0 p-0">Title</p>
                         <input name="blogCategoryUpdate" type="text" class="form-control w-100 my-1" id="blogCategoryUpdate">
+                        <p class="m-0 p-0">Category Detail</p>
                         <textarea name="updatedBlogContent" id="BlogContentID">
                         </textarea>
+
+                        <p class="m-0 p-0">Meta Description</p>
+                        <input name="metaBlogDescriptionID" type="text" class="form-control w-100 my-1" id="metaDescriptionID">
+                        <p class="m-0 p-0">Meta Title</p>
+                        <input name="metaBlogTitleID" type="text" class="form-control w-100 my-1" id="metaTitleID">
+
+
                         <button type="submit" class="btn btn-success w-100 my-1" id="blogCategoryUpdate">Save</button>
                     </form>
                 </div>
@@ -141,10 +148,18 @@
                 <form action="{{route('updateProductCategory')}}" method="post">
                     @csrf
                     <div>
+
                         <input name="updatedProductID" type="text" class="d-none" id="updatedProductID">
+                        <p class="m-0 p-0">Title</p>
                         <input name="updatedProductName" type="text" class="form-control w-100 my-1" id="productCategory">
+                        <p class="m-0 p-0">Category Detail</p>
                         <textarea name="updatedProductContent" id="productContentID">
                         </textarea>
+                        <p class="m-0 p-0">Meta Description</p>
+                        <input name="metaDescriptionID" type="text" class="form-control w-100 my-1" id="metaDescriptionID">
+                        <p class="m-0 p-0">Meta Title</p>
+                        <input name="metaTitleID" type="text" class="form-control w-100 my-1" id="metaTitleID">
+
                         <button class="btn btn-success w-100 my-1">Save</button>
                     </div>
                 </form>
@@ -166,6 +181,11 @@
             document.getElementById('blogCategoryModal').classList="d-flex position-absolute h-100 w-100 justify-content-center align-items-center"
             document.getElementById('blogCategoryUpdate').value = item.name
             document.getElementById('blogCategoryIDUpdate').value = item.id
+
+
+            document.getElementById('metaBlogDescriptionID').value = item.id
+            document.getElementById('metaBlogTitleID').value = item.id
+
             tinymce.get("BlogContentID").setContent(item.content);
         }
 
@@ -177,6 +197,10 @@
             document.getElementById('productCategoryModal').classList="d-flex position-absolute h-100 w-100 justify-content-center align-items-center"
             document.getElementById('productCategory').value = item.name
             document.getElementById('updatedProductID').value = item.id
+
+            document.getElementById('metaDescriptionID').value = item.meta_description
+            document.getElementById('metaTitleID').value = item.title
+
             tinymce.get("productContentID").setContent(item.content);
         }
 
@@ -185,9 +209,7 @@
         }
 
 
-
     </script>
-
 
 
 

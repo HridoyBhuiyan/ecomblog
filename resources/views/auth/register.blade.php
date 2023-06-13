@@ -47,7 +47,7 @@
         </form>
         </div>
 
-        <div class="col-5 bg-white mx-2 p-3 rounded">
+        <div class="col-6 bg-white mx-2 p-3 rounded">
             <h4 class="text-center font-semibold">Admin List</h4>
 
 
@@ -57,17 +57,21 @@
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Phone</th>
-                    <th>Created At</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="user in users">
-                    <td>@{{ user.name }}</td>
-                    <td>@{{ user.email }}</td>
-                    <td>@{{ user.phone }}</td>
-                    <td>@{{ user.created_at }}</td>
-                </tr>
+                @foreach($user as $item)
+                    <tr v-for="user in users">
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->email }}</td>
+                        <td class="w-100">
+                            <button class="btn-info btn">Update</button>
+                            <button class="btn-danger btn">Delete</button>
+                        </td>
+                    </tr>
+                @endforeach
+
                 </tbody>
             </table>
 

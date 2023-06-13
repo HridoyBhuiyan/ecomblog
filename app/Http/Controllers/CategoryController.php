@@ -14,6 +14,7 @@ class CategoryController extends Controller
             'blogCategory'=>BlogCategoryModel::paginate(12),
             'productCategory'=>ProductCategoryModel::paginate(12)
         ];
+//        return $data;
         return view('adminPage.category.category',['data'=>$data]);
     }
 
@@ -43,8 +44,11 @@ class CategoryController extends Controller
     public function updateProductCategory(Request $request){
         ProductCategoryModel::where('id',$request->input('updatedProductID'))->update([
             'name'=>$request->input('updatedProductName'),
-            'content'=>$request->input('updatedProductContent')
+            'content'=>$request->input('updatedProductContent'),
+            "meta_description"=>$request->input('metaDescriptionID'),
+            'title'=>$request->input('metaTitleID')
         ]);
+
         return redirect('admin/category')->with(['productUpdateCategory'=>"Product Category Updated"]);
     }
 
@@ -69,6 +73,7 @@ class CategoryController extends Controller
             'metaDescription'=>$categoryData->meta_description,
             'products'=>$products
         ];
+
         return view('clientPages.category',['data'=>$data,'category'=>ProductCategoryModel::all()]);
     }
 }

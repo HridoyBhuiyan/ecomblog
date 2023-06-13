@@ -26,11 +26,13 @@ class SitemapController extends Controller
 
 
     public function XMLProductSitemap(){
-        return view('sitemap.xmlproductsitemap');
+        $data = ProductModel::get();
+        return view('sitemap.xmlproductsitemap',['data'=>$data]);
     }
 
     public function XMLPostSitemap(){
-        return view('sitemap.xmlpostsitemap');
+        $data = PostModel::get();
+        return view('sitemap.xmlpostsitemap',['data'=>$data]);
     }
 
 

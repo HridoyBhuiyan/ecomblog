@@ -8,14 +8,16 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function index(){
-        return view('auth.register');
+        $user = User::get();
+        return view('auth.register',['user'=>$user]);
     }
+
+    public function test(){
+
+    }
+
     public function allAdmin(){
         return User::all();
     }
-
-
-
-
 
 }
