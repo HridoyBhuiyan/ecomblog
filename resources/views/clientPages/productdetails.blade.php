@@ -13,7 +13,7 @@
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>
     <meta property="og:site_name" content="MobileDokan.org"/>
-    <meta property="og:title" content="{{$data["product"]->meta_title}} Price in Bangladesh"/>
+    <meta property="og:title" content="{{$data["product"]->meta_title}} Price in Bangladesh {{date("F Y")}}"/>
     <meta property="og:description" content="{{$data["product"]->meta_description}}"/>
     <link rel="canonical" href="https://mobiledokan.org/{{$data["product"]->slug}}"/>
 
@@ -21,7 +21,7 @@
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "{{$data["product"]->title}} Price in Bangladesh",
+      "headline": "{{$data["product"]->title}} Price in Bangladesh {{date("F Y")}}",
       "image": [
         "{{URL::to('public',$data["product"]->feature_image)}}"
        ],
@@ -80,7 +80,8 @@
     </script>
 
 
-    @if($data['faq'])
+
+    @if($data['faq']||sizeof($comments)>0)
         <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -100,6 +101,26 @@
                     {
                     "@type": "Question",
                     "name": "{{$item->question}}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{$item->answer}}"
+            }
+          },
+          @endif
+            @endforeach
+
+            @foreach($comments as $index=>$item)
+                @if($loop->last)
+                    {"@type": "Question",
+                        "name": "{{$item->comment}}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{$item->answer}}"
+            }
+          }
+            @else
+                    {"@type": "Question",
+                    "name": "{{$item->comment}}",
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "{{$item->answer}}"
@@ -197,13 +218,16 @@
         </h1>
 
 {{--        photo section start here--}}
+
+
         <div class="row">
             <div class="col-lg-5 col-md-4 d-flex align-items-center justify-content-center">
-                <div class="row">
-                    <div class="col-12 my-2 d-flex justify-content-center productBinImg">
+                <div class="row m-0 p-0">
+                    <div class="col-12 my-2 d-flex justify-content-center productBinImg m-0 p-0">
                         <img src="{{URL::to('public',$data["product"]->feature_image)}}" alt="">
                     </div>
                     <div class="col-12 productExtraImg d-lg-flex justify-content-center">
+
 {{--                        <img class="m-2" src="storage/phoneimg.jpg" alt="">--}}
 {{--                        <img class="m-2" src="storage/phoneimg.jpg" alt="">--}}
 {{--                        <img class="m-2" src="storage/phoneimg.jpg" alt="">--}}
@@ -267,13 +291,9 @@
         </div>
 {{--        photo section end here--}}
 
-
-
 {{--        tab start here--}}
         <div class="row my-5">
             <div class="col-lg-8 col-md-8 col-sm-12">
-
-
                 <div class="scrollContainer">
                     <div>
                         <h6 class="text-center bg-white py-2">Table Content</h6>
@@ -283,7 +303,7 @@
                             @if(!$data["product"]->specification==null)
                                 <button id="button-1" class="btnScroll btn">
                                     <a id="button-1" href="#specification">
-                                        <img id="button-1" src="public/storage/clipboard.png">
+                                        <img id="button-1" src="/public/storage/clipboard.png">
                                         <span id="button-1">Spec</span>
                                     </a>
                                 </button>
@@ -292,7 +312,7 @@
                                 @if($data["product"]->description)
                                     <button id="button-2" class="btnScroll btn">
                                         <a id="button-2" href="#description">
-                                            <img id="button-2" src="public/storage/description.png">
+                                            <img id="button-2" src="/public/storage/description.png">
                                             <span id="button-2">Details</span>
                                         </a>
                                     </button>
@@ -302,7 +322,7 @@
                                 @if($data['pros'] ||$data['cons'])
                                     <button id="button-3" class="btnScroll btn">
                                         <a id="button-3" href="#pros&cons">
-                                            <img id="button-3" src="public/storage/yn.png">
+                                            <img id="button-3" src="/public/storage/yn.png">
                                             <span id="button-3">Pros & Cons</span>
                                         </a>
                                     </button>
@@ -312,7 +332,7 @@
                                 @if($data["product"]->video_link)
                                     <button id="button-4" class="btnScroll btn">
                                         <a id="button-4" href="#video">
-                                            <img id="button-4" src="public/storage/play.png">
+                                            <img id="button-4" src="/public/storage/play.png">
                                             <span id="button-4">Video</span>
                                         </a>
                                     </button>
@@ -322,16 +342,17 @@
                                 @if($data['product']->things_to_know)
                                     <button id="button-5" class="btnScroll btn">
                                         <a id="button-5" href="#things-to-know">
-                                            <img id="button-5" src="public/storage/ttk.png">
+                                            <img id="button-5" src="/public/storage/ttk.png">
                                             <span id="button-5">Overview</span>
                                         </a>
                                     </button>
                                 @endif
 
-                                @if($data['faq'])
+
+                                @if($data['faq']||sizeof($comments)>0)
                                     <button id="button-6" class="btnScroll btn">
                                         <a id="button-6" href="#faq">
-                                            <img  id="button-6" src="public/storage/faq.png">
+                                            <img  id="button-6" src="/public/storage/faq.png">
                                             <span  id="button-6">FAQ</span>
                                         </a>
                                     </button>
@@ -421,13 +442,19 @@
                         </div>
                     @endif
 
-                    @if($data['faq'])
+                    @if($data['faq']||sizeof($comments)>0)
                         <div id="section-6">
                             <!-- Content for section 6 -->
                             <h4>{{$data["product"]->title}} FAQ</h4>
                             @foreach($data['faq'] as $item)
                                 <div>
                                     <div class="font-weight-bold py-1"> {{$item->question}}</div>
+                                    <div>{{$item->answer}}</div>
+                                </div>
+                            @endforeach
+                            @foreach($comments as $item)
+                                <div>
+                                    <div class="font-weight-bold py-1"> {{$item->comment}}</div>
                                     <div>{{$item->answer}}</div>
                                 </div>
                             @endforeach

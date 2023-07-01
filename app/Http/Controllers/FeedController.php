@@ -55,6 +55,35 @@ class FeedController extends Controller
     }
 
 
+    function productFeed($category, $slug){
+
+        $Category = ProductCategoryModel::where('name',$category)->first();
+        if (!$Category){
+            return redirect('/')->with(['data'=>"Opss ! Page Unavailable!!"]);
+        }
+        else{
+            if (ProductModel::where('category',$Category->id)->pluck('slug')->count()>0){
+                if (ProductModel::where('slug',$slug)->count()==1){
+                    $data = [
+                        "product"=>ProductModel::where('slug',$slug)->first(),
+                        "faq"=>json_decode(ProductModel::where('slug',$slug)->first()->faq),
+                        "pros"=>json_decode(ProductModel::where('slug',$slug)->first()->pros),
+                        "cons"=>json_decode(ProductModel::where('slug',$slug)->first()->cons),
+                    ];
+                    return response()->view('rssfeed.productFeed',["data"=>$data])->header('Content-Type', 'text/xml');
+                }
+                else{return redirect('/')->with(['data'=>"Opss ! Page Unavailable!!"]);}
+            }
+
+            else{
+                return redirect('/')->with(['data'=>"Opss ! Page Unavailable!!"]);
+            }
+        }
+
+
+
+    }
+
     function categoryFeed($slug){
         $data = ProductCategoryModel::where('slug',$slug)->first();
         return response()->view("rssfeed.categoryFeed",['data'=>$data])->header('Content-Type','text/xml');

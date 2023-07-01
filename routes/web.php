@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\InfoController;
@@ -19,15 +20,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProductController::class,'allProductList']);
 Route::get('/blog', [BlogController::class, 'blogView']);
-Route::get('/blog/1', function () {return view('clientPages.blogDetails');});
-Route::view('/test/a', 'clientPages.test.test');
+
 
 
 Route::view('/about-us', 'clientPages.aboutUs');
-Route::view('/contact', 'clientPages.contact');
+Route::get('/contact', [ContactController::class,'index'])->name('contactView');
 Route::view('/privacy-policy', 'clientPages.privacyPolicy');
 Route::view('/advertisement', 'clientPages.advert');
 Route::view('/dmca', 'clientPages.dmca');
+
+Route::Post('/contactFormPost',[ContactController::class,"contactFormPost"])->name('contactFormPost');
 
 
 Route::get('/category/{slug}', [CategoryController::class,'categoryPage'])->name('category');
@@ -65,8 +67,10 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
     Route::get('deleteProduct/{id}',[ProductController::class,'deleteProduct'])->name('deleteProduct');
 
 //    Comment related Routes
-
     Route::post('postComment',[CommentController::class,'postComment'])->name('postComment')->withoutMiddleware('auth');
+    Route::post('postCommentReply',[CommentController::class,'postCommentReply'])->name('postCommentReply')->middleware('auth');
+    Route::get('/deleteComment/{id}',[CommentController::class,'deleteComment'])->name('deleteComment')->middleware('auth');
+
 
 //    tag related routes
     Route::get('/tags',[TagController::class, 'index']);
@@ -88,7 +92,14 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
     Route::post('/newProductCategory',[CategoryController::class,'newProductCategory'])->name('newProductCategory');
     Route::post('/updateProductCategory',[CategoryController::class,'updateProductCategory'])->name('updateProductCategory');
     Route::get('/deleteProductCategory/{id}',[CategoryController::class,'deleteProductCategory'])->name('deleteProductCategory');
+
+//    Login Register
+    Route::post('/register', [AdminController::class, 'newAdmin'])->name('registerAdmin');
+
+//    Message related Routes here
+    Route::get('/message', [ContactController::class,'messageGet'])->name('message');
 });
+
 
 
 Route::middleware('auth')->group(function (){
@@ -131,7 +142,15 @@ Route::get('/sitemap',[SitemapController::class,'index']);
 
 //Feed related Routes from here
 Route::get('/feed',[FeedController::class,'homeFeed']);
+
+
 Route::get('/{slug}/feed',[FeedController::class,'postFeed']);
+
+
+Route::get('/{category}/{slug}/feed',[FeedController::class,'productFeed']);
+
+
+
 Route::get('/blog/feed',[FeedController::class,'blogFeed']);
 Route::get('/category/{slug}/feed',[FeedController::class,'categoryFeed']);
 Route::get('/sitemap.xml',[SitemapController::class,'XMLsitemap']);
@@ -140,9 +159,13 @@ Route::get('/product-sitemap.xml',[SitemapController::class,'XMLProductSitemap']
 Route::get('/post-sitemap.xml',[SitemapController::class,'XMLPostSitemap']);
 Route::get('/pages-sitemap.xml',[SitemapController::class,'XMLPagesitemap']);
 
+
+
 require __DIR__.'/auth.php';
 
 Route::get('/{slug}', [ProductController::class, 'singleProduct']);
 
-//Route::get('/{slug}',[BlogController::class,'showSinglePost']);
+Route::get('/{category}/{slug}', [ProductController::class, 'productProduct']);
+
+Route::get('/{slug}',[BlogController::class,'showSinglePost']);
 

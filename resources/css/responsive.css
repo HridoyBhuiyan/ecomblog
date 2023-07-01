@@ -14,6 +14,10 @@
     .cardPrice>div>strike{
         margin: 0 0 0 8px;
     }
+
+    .row > .justify-content-center > div > .productBinImg > img {
+        width: 100px !important;
+    }
 }
 @media screen and (max-width: 515px){
     div>div>.blogSidebarItem>div>img{
@@ -40,6 +44,8 @@
     .productGrid>div>a>img{
         width: 180px !important;
     }
+
+
     .cardPrice{
         position: absolute;
         bottom: 0;

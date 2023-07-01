@@ -1,3 +1,5 @@
+
+
 document.getElementById('target').addEventListener('click',function (){
     let node = document.getElementById('navbarSupportedContent')
     if (node.className=="collapse navbar-collapse"){

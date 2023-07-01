@@ -180,7 +180,7 @@ class BlogController extends Controller
 
     function deletePost($id){
         PostModel::where('id', $id)->delete();
-        return redirect('/admin/blog')->with('deletedData',$id);
+        return redirect('/')->with(['deleteText'=>"Comment Deleted !!"]);
     }
 
     function updatePost($id){
@@ -219,16 +219,11 @@ class BlogController extends Controller
     function showSinglePost($slug){
         if (PostModel::where('slug', $slug)->count()==1){
             $data = [
-                "product"=>ProductModel::where('slug',$slug)->first(),
-                "faq"=>json_decode(ProductModel::where('slug',$slug)->first()->faq),
-                "pros"=>json_decode(ProductModel::where('slug',$slug)->first()->pros),
-                "cons"=>json_decode(ProductModel::where('slug',$slug)->first()->cons)
+                "postData"=>PostModel::where('slug', $slug)->get()->first(),
+                "admin"=>"admin"
             ];
-            return view('clientPages.productdetails',['data'=>$data]);
+            return view('clientPages.blogDetails',['data'=>$data,'category'=>ProductCategoryModel::all()]);
         }
-        else{
-            return "not even in the post";
-            return redirect('/');
-        }
+        else{ return redirect('/');}
     }
 }

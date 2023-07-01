@@ -57,18 +57,30 @@
     </script>
 
 @endsection
-@section('content')
 
+@section('content')
+    @if(session('data'))
+        <div class="bg-success text-white text-center">
+            {{session('data')}}😢
+        </div>
+    @endif
     @include('clientLayout.menuBar',['category'=>$category])
+
+
+
 
     <div class="container my-5">
         <div class="productGrid" id="productGrid">
 
-
-            @foreach($data as $item)
+            @foreach($data as $items=>$item)
                 @if($item->status=='published')
                 <div class="d-flex flex-column shadow-lg">
-                    <a href="{{url($item->slug)}}" class="m-0 p-0 w-auto">
+
+
+
+
+                    <a href="{{"/".strtolower($categoryData[$items]['categoryName'])."/".$item->slug}}" class="m-0 p-0 w-auto">
+
                     <img src="{{URL::to('public',$item->feature_image)}}" alt="" class="m-0 w-100">
                     <span class="mx-2 text-danger cardTitle">{{$item->title}}</span>
 

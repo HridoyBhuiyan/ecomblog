@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CommentModel;
 use App\Models\PostModel;
 use App\Models\ProductCategoryModel;
 use App\Models\ProductModel;
@@ -15,7 +16,14 @@ class ProductController extends Controller
 {
     public function index(){
         $data = ProductModel::orderBy('id','desc')->get();
-        return view('adminPage.product.product', ['data'=>$data]);
+        $category = [];
+        foreach ($data as $item){
+
+            $catName= strtolower(ProductCategoryModel::where("id",$item->category)->first()->name);
+            array_push($category,$catName);
+        }
+
+        return view('adminPage.product.product', ['data'=>$data,'category'=>$category]);
     }
 
     public function addNewProduct(){
@@ -27,6 +35,8 @@ class ProductController extends Controller
     }
 
     public function createNewProduct(Request $request){
+
+
         $faqData = [];
         if ($request->hasFile('thumbnail')){
             $path = Storage::url($request->file('thumbnail')->store('/public'));
@@ -64,6 +74,9 @@ class ProductController extends Controller
             $tags=0;
         }
 
+
+        $category = $request->has('category')?$request->input('category'):1;
+
         ProductModel::insert([
             'title'=>$request->title,
             'description'=>$request->phoneDetails,
@@ -86,7 +99,7 @@ class ProductController extends Controller
             'loved'=>0,
             'official_price'=>$request->officialPrice,
             'unofficial_price'=>$request->unofficialPrice,
-            'category'=>$request->category,
+            'category'=>$category,
             'tags'=>$tags,
             'status'=>"published"
         ]);
@@ -96,7 +109,59 @@ class ProductController extends Controller
 
     public function allProductList(){
         $data = ProductModel::where('status','published')->orderBy('id',"desc")->paginate(16);
-        return view('clientPages.home',['data'=>$data, "category"=>ProductCategoryModel::all()]);
+
+        $categoryData = [];
+        foreach ($data as $item){
+            $categoryID = $item->category;
+            $categoryName= ProductCategoryModel::where('id',$categoryID)->pluck("name")->first();
+            array_push($categoryData, ['id'=>$item->id,"categoryName"=>$categoryName]);
+        }
+
+        return view('clientPages.home',['data'=>$data, "categoryData"=>$categoryData, 'category'=>ProductCategoryModel::all()]);
+    }
+
+    public function productProduct($category, $slug){
+        $Category = ProductCategoryModel::where('name',$category)->first();
+        if (!$Category){
+            return redirect('/')->with(['data'=>"Opss ! Page Unavailable!!"]);
+        }
+        else{
+
+            if (ProductModel::where('category',$Category->id)->pluck('slug')->count()>0){
+                $product = ProductModel::where('slug',$slug)->first();
+                $requestedCategory = $product->category;
+                $requestedTag = $product->tags;
+                $previousView = $product->loved;
+                $productId = ProductModel::where('slug',$slug)->first()->id;
+                ProductModel::where('slug',$slug)->first()->update(['loved'=>$previousView+1]);
+                $data = [
+                    "product"=>ProductModel::where('slug',$slug)->first(),
+                    "faq"=>json_decode(ProductModel::where('slug',$slug)->first()->faq),
+                    "pros"=>json_decode(ProductModel::where('slug',$slug)->first()->pros),
+                    "cons"=>json_decode(ProductModel::where('slug',$slug)->first()->cons),
+                    "similarCategoryProduct"=>ProductModel::where("category","like",$requestedCategory)->where('status','published')->limit(2)->get(),
+                    "similarTagProduct"=>ProductModel::where('tags','like',$requestedTag)->limit(8)->get(),
+                ];
+
+                $comment = CommentModel::where(['product_id'=>$productId,'status'=>"published"])->get();
+                return view('clientPages.productdetails',[
+                    'data'=>$data,
+                    'category'=>ProductCategoryModel::all(),
+                    "categoryName"=>ProductCategoryModel::where('id',$requestedCategory)->first(),
+                    'comments'=>$comment
+                ]);
+            }
+
+            else{
+                return redirect('/')->with(['data'=>"Opss ! Page Unavailable!!"]);
+            }
+        }
+
+
+
+
+
+
     }
 
     public function singleProduct($slug){

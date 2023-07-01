@@ -118,7 +118,7 @@ button:focus{
     height: 90px;
     width: 100% !important;
 }
-.mediaImgSize > div> a{
+.mediaImgSize > div> div{
     padding: 6px;
     font-size: 12px;
 }

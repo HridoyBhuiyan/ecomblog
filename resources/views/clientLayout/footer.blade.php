@@ -5,9 +5,7 @@
                 <div class="footerItem">
                     <i class="fa-solid fa-envelope"></i>
                     <span>Contact us</span>
-                    <p>mobiledokan@gmail.com</p>
-
-
+                    <p>mobiledokan@gmail.com</p
                     <i class="fa-regular fa-id-badge"></i>
                     <span>Social Media</span>
                     <div>
@@ -31,7 +29,7 @@
             </div>
 
 
-            <div class="col-lg-3 col-md-3 col-sm-12">
+            <div class="col-lg-3 col-md-3 col-sm-12"  style="background: #022335">
                 <div class="footerItem">
                     <i class="fa-solid fa-phone-flip"></i>
                     <span>Pages</span>
@@ -45,7 +43,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-3 col-sm-12">
+            <div class="col-lg-3 col-md-3 col-sm-12" style="background: #022335">
                 <div class="footerItem">
                     <i class="fa-solid fa-phone-flip"></i>
                     <span>Hotline</span>
@@ -58,29 +56,4 @@
     </div>
 </footer>
 
-
-
-
-
-
-
-{{--Footer Below here--}}
-{{--<div class="container mt-2">--}}
-{{--    <div class="d-flex w-100">--}}
-{{--        <div class="bg-success p-2 d-flex align-items-center justify-content-center">Pages:</div>--}}
-{{--        <div class=" w-100 p-2">--}}
-{{--            <span class="p-2">Home</span>--}}
-{{--            <span class="p-2">About Us</span>--}}
-{{--            <span class="p-2">Contact</span>--}}
-{{--            <span class="p-2">Privacy Policy</span>--}}
-{{--            <span class="p-2">Sitemap</span>--}}
-{{--            <span class="p-2">DMCA</span>--}}
-{{--            <span class="p-2">Blog</span>--}}
-{{--            <span class="p-2">Advertisement</span>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-
-{{--    <hr>--}}
-
-{{--</div>--}}
 

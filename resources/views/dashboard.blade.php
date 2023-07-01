@@ -5,6 +5,9 @@
 
 <x-app-layout>
 
+
+
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="row">
@@ -76,6 +79,14 @@
                                 SEO Meta
                             </a>
                         </li>
+
+                        <li class="my-2 py-2 rounded" style="padding-left: 10px">
+                            <a href="/admin/message">
+                                <i class="fa-solid fa-envelope"></i>
+                                Message
+                            </a>
+                        </li>
+
                         <li class="my-2 py-2 rounded" style="padding-left: 10px">
                             <a href="/admin/info">
                                 <i class="fa-solid fa-circle-info"></i>
