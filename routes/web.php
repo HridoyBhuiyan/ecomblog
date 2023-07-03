@@ -98,6 +98,7 @@ Route::prefix("/admin")->middleware('auth')->group(function (){
 
 //    Message related Routes here
     Route::get('/message', [ContactController::class,'messageGet'])->name('message');
+    Route::get('/deleteContact/{id}',[ContactController::class,'deleteContact'])->name('contactDelete');
 });
 
 

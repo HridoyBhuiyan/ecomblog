@@ -55,10 +55,7 @@
                                     </div>
                                     <button type="submit" class="w-100 btn btn-primary">Submit</button>
                                 </form>
-
-
                             </li>
-
                         </ul>
                     </div>
                 </div>

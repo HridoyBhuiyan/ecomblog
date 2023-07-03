@@ -27,7 +27,14 @@ class ContactController extends Controller
     }
 
     public function messageGet(){
-        return view('adminPage.message.message');
+        $data = ContactModel::orderBy('id',"desc")->paginate(10);
+        return view('adminPage.message.message',['data'=>$data]);
+    }
+
+
+    public function deleteContact($id){
+        ContactModel::where('id',$id)->delete();
+        return 0;
     }
 
 }

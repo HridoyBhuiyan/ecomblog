@@ -311,3 +311,12 @@ img{
     padding: 5px 5px 0px 5px;
 }
 
+#section-1>div,
+#section-2>p,
+#section-3>div,
+#section-4>div,
+#section-5>p,
+#section-6>div{
+    margin-right: 13px !important;
+}
+
